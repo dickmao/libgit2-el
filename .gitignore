@@ -4,3 +4,5 @@
 /compile_commands.json
 /emake.el
 /emacs-travis.mk
+*.elc
+*-autoloads.el
