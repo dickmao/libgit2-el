@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <assert.h>
 
-#include "emacs-module.h"
 #include "git2.h"
 
 #ifdef EGIT_DEBUG
