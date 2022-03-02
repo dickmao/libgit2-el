@@ -1,12 +1,13 @@
 ;;; libgit.el --- Thin bindings to libgit2. -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2018 TheBB
-;;
-;; Author: Eivind Fonn <evfonn@gmail.com>
-;; URL: https://github.com/magit/libegit2
+;; Copyright (C) 2018-2022 TheBB and the Authors
+
+;; Authors: Eivind Fonn <evfonn@gmail.com>
+;;          dick        <dickie.smalls@commandlinesystems.com>
+;; URL: https://github.com/commercial-emacs/libgit
 ;; Version: 0.0.1
 ;; Keywords: git vc
-;; Package-Requires: ((emacs "25.1"))
+;; Package-Requires: ((emacs "27.1"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -24,7 +25,7 @@
 ;;; Commentary:
 
 ;; This package provides thin bindings to libgit2. To use these bindings,
-;; issue a call to (require 'libgit). This will load the dynamic module,
+;; issue a call to (require 'libgit2). This will load the dynamic module,
 ;; or prompt the user to build it.
 
 ;;; Code:
@@ -91,6 +92,6 @@ If that fails, then raise an error."
 
 (libgit-load)
 
-(provide 'libgit)
+(provide 'libgit2)
 
 ;;; libgit.el ends here

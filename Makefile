@@ -90,7 +90,7 @@ define LOADDEFS_TMPL
 ;;; Code:
 (add-to-list 'load-path (directory-file-name \
 (or (file-name-directory #$$) (car load-path))))
-
+
 ;; Local Variables:
 ;; version-control: never
 ;; no-byte-compile: t
@@ -99,7 +99,6 @@ define LOADDEFS_TMPL
 ;;; $(PKG)-autoloads.el ends here
 endef
 export LOADDEFS_TMPL
-#'
 
 $(PKG)-autoloads.el: $(ELS)
 	@printf "Generating $@\n"
@@ -113,3 +112,9 @@ $(PKG)-autoloads.el: $(ELS)
 	(update-directory-autoloads default-directory))"
 
 endif
+
+README.rst: README.in.rst libgit2.el
+	grep ';;' libgit2.el \
+	    | awk '/;;;\s*Commentary/{within=1;next}/;;;\s*/{within=0}within' \
+	    | sed -e 's/^\s*;;*\s*//g' \
+	    | bash readme-sed.sh "COMMENTARY" README.in.rst > README.rst
