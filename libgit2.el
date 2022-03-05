@@ -30,9 +30,6 @@
 
 ;;; Code:
 
-(unless module-file-suffix
-  (error "Module support not detected, libgit can't work"))
-
 (defvar libgit--root
   (file-name-directory (or load-file-name buffer-file-name))
   "Directory where libgit is installed.")
