@@ -1,4 +1,4 @@
-;;; libgit.el --- Thin bindings to libgit2. -*- lexical-binding: t; -*-
+;;; libgit2.el --- Thin bindings to libgit2. -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2018-2022 TheBB and the Authors
 
@@ -30,20 +30,16 @@
 
 ;;; Code:
 
-(defvar libgit--root
-  (file-name-directory (or load-file-name buffer-file-name))
-  "Directory where libgit is installed.")
-
 (defvar libgit--build-dir
   (expand-file-name "build" libgit--root)
-  "Directory where the libegit2 dynamic module file should be built.")
+  "Directory where the libgit2_el dynamic module file should be built.")
 
 (defvar libgit--module-file
-  (expand-file-name "libegit2.so" libgit--build-dir)
-  "Path to the libegit2 dynamic module file.")
+  (expand-file-name "libgit2_el.so" libgit--build-dir)
+  "Path to the libgit2_el dynamic module file.")
 
 (defun libgit--configure ()
-  "Run the configure step of libegit2 asynchronously.
+  "Run the configure step of libgit2_el asynchronously.
 
 On successful exit, pass control on to the build step."
   (make-directory libgit--build-dir 'parents)
@@ -58,7 +54,7 @@ On successful exit, pass control on to the build step."
            (error "libgit: configuring failed with exit code %d" (process-exit-status proc))))))))
 
 (defun libgit--build ()
-  "Run the build step of libegit2 asynchronously.
+  "Run the build step of libgit2_el asynchronously.
 
 On successful exit, pass control on to the load step."
   (let ((default-directory libgit--build-dir))
@@ -72,16 +68,16 @@ On successful exit, pass control on to the load step."
            (error "libgit: building failed with exit code %d" (process-exit-status proc))))))))
 
 (defun libgit--load ()
-  "Load the `libegit2' dynamic module.
+  "Load the `libgit2_el' dynamic module.
 If that fails, then raise an error."
-  (unless (featurep 'libegit2)
+  (unless (featurep 'libgit2)
     (load libgit--module-file nil t t))
-  (unless (featurep 'libegit2)
-    (error "libgit: unable to load the libegit2 dynamic module")))
+  (unless (featurep 'libgit2)
+    (error "libgit: unable to load the libgit2_el dynamic module")))
 
 ;;;###autoload
 (defun libgit-load ()
-  "Load the `libegit2' dynamic module."
+  "Load the `libgit2_el' dynamic module."
   (interactive)
   (if (file-exists-p libgit--module-file)
       (libgit--load)
@@ -91,4 +87,4 @@ If that fails, then raise an error."
 
 (provide 'libgit2)
 
-;;; libgit.el ends here
+;;; libgit2.el ends here

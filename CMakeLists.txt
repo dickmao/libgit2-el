@@ -1,10 +1,8 @@
 cmake_minimum_required(VERSION 3.5.1)
-project(libegit2 LANGUAGES C)
+project(libgit2_el LANGUAGES C)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 set(CMAKE_POSITION_INDEPENDENT_CODE TRUE CACHE BOOL "pic" FORCE)
-set(BUILD_SHARED_LIBS OFF CACHE BOOL "shared" FORCE)
-set(BUILD_CLAR OFF CACHE BOOL "clar" FORCE)
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -DEGIT_DEBUG")
 
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
@@ -19,7 +17,7 @@ include_directories($ENV{HOME}/.local/include)
 link_directories($ENV{HOME}/.local/lib)
 
 add_subdirectory(src)
-install(TARGETS egit2)
+install(TARGETS git2_el)
 
 if(BUILD_TESTS)
 	enable_testing()
@@ -61,11 +59,11 @@ if(BUILD_TESTS)
 	endif(CMAKE_BUILD_TYPE STREQUAL "Debug")
 
 	foreach(test ${EGIT_TESTS})
-	  add_test(NAME libegit2_${test} COMMAND
+	  add_test(NAME libgit2_el_${test} COMMAND
 	    emacs --batch
 		  -L "${CMAKE_CURRENT_BINARY_DIR}"
 		  -L "${CMAKE_CURRENT_SOURCE_DIR}/test"
-		  -l libegit2
+		  -l libgit2_el
 		  -l test-helper
 		  -l ${test}-test
 		  -f ert-run-tests-batch-and-exit)

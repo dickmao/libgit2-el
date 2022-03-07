@@ -112,7 +112,7 @@
     __end##name:
 
 /**
- * Initialize the libegit2-emacs interface.
+ * Initialize the libgit2 interface.
  * This function should only be called once.
  */
 void em_init(emacs_env *env);

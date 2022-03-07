@@ -30,7 +30,7 @@
     (commit-change "test" "foo\nbaz")
     (let* ((repo (libgit-repository-open path))
            ;; FIXME: better to rewrite this with HEAD and HEAD^ when
-           ;; these abbreviations are supported by libegit.
+           ;; these abbreviations are supported by libgit2_el.
            (first (libgit-reference-name-to-id repo "HEAD")))
       (commit-change "test" "bar\nbaz")
       (let* ((last  (libgit-reference-name-to-id repo "HEAD"))

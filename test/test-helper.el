@@ -7,7 +7,7 @@
   (let* ((cwd (if (listp varnames) temporary-file-directory varnames))
          (varnames (if (listp varnames) varnames (list varnames)))
          (bindings (mapcar (lambda (sym)
-                             (list sym (format "%slibegit2-test-%s/"
+                             (list sym (format "%slibgit2-el-test-%s/"
                                                temporary-file-directory sym)))
                            varnames)))
     `(let (,@bindings)

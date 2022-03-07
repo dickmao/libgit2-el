@@ -10,7 +10,7 @@ int plugin_is_GPL_compatible;
 static bool initialized = false;
 
 /**
- * Initialize the libegit2 module.
+ * Initialize the libgit2 module.
  * This is only done once, no matter how many times it's called.
  */
 int emacs_module_init(struct emacs_runtime *ert)
@@ -29,7 +29,7 @@ int emacs_module_init(struct emacs_runtime *ert)
     // Define all lisp-callable functions
     egit_init(env);
 
-    em_provide(env, "libegit2");
+    em_provide(env, "libgit2_el");
     initialized = true;
     return 0;
 }

@@ -1,4 +1,4 @@
-(require 'libegit2)
+(require 'libgit2)
 
 (defun my-sideband-progress (msg)
   (message "Received a message on the sideband"))
