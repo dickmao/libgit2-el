@@ -29,7 +29,7 @@ int emacs_module_init(struct emacs_runtime *ert)
     // Define all lisp-callable functions
     egit_init(env);
 
-    em_provide(env, "libgit2_el");
+    em_provide(env, "libgit2-el");
     initialized = true;
     return 0;
 }

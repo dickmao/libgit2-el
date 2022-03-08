@@ -32,14 +32,14 @@
 
 (defvar libgit--build-dir
   (expand-file-name "build" libgit--root)
-  "Directory where the libgit2_el dynamic module file should be built.")
+  "Directory where the libgit2-el dynamic module file should be built.")
 
 (defvar libgit--module-file
-  (expand-file-name "libgit2_el.so" libgit--build-dir)
-  "Path to the libgit2_el dynamic module file.")
+  (expand-file-name "libgit2-el.so" libgit--build-dir)
+  "Path to the libgit2-el dynamic module file.")
 
 (defun libgit--configure ()
-  "Run the configure step of libgit2_el asynchronously.
+  "Run the configure step of libgit2-el asynchronously.
 
 On successful exit, pass control on to the build step."
   (make-directory libgit--build-dir 'parents)
@@ -54,7 +54,7 @@ On successful exit, pass control on to the build step."
            (error "libgit: configuring failed with exit code %d" (process-exit-status proc))))))))
 
 (defun libgit--build ()
-  "Run the build step of libgit2_el asynchronously.
+  "Run the build step of libgit2-el asynchronously.
 
 On successful exit, pass control on to the load step."
   (let ((default-directory libgit--build-dir))
@@ -68,16 +68,16 @@ On successful exit, pass control on to the load step."
            (error "libgit: building failed with exit code %d" (process-exit-status proc))))))))
 
 (defun libgit--load ()
-  "Load the `libgit2_el' dynamic module.
+  "Load the `libgit2-el' dynamic module.
 If that fails, then raise an error."
   (unless (featurep 'libgit2)
     (load libgit--module-file nil t t))
   (unless (featurep 'libgit2)
-    (error "libgit: unable to load the libgit2_el dynamic module")))
+    (error "libgit: unable to load the libgit2-el dynamic module")))
 
 ;;;###autoload
 (defun libgit-load ()
-  "Load the `libgit2_el' dynamic module."
+  "Load the `libgit2-el' dynamic module."
   (interactive)
   (if (file-exists-p libgit--module-file)
       (libgit--load)

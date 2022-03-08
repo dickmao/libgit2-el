@@ -48,10 +48,10 @@ RM = /usr/local/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dick/libgit2_el
+CMAKE_SOURCE_DIR = /home/dick/libgit2-el
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dick/libgit2_el
+CMAKE_BINARY_DIR = /home/dick/libgit2-el
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,9 +126,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dick/libgit2_el/CMakeFiles /home/dick/libgit2_el/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dick/libgit2-el/CMakeFiles /home/dick/libgit2-el/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dick/libgit2_el/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dick/libgit2-el/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -157,17 +157,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named git2_el
+# Target rules for targets named git2-el
 
 # Build rule for target.
-git2_el: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 git2_el
-.PHONY : git2_el
+git2-el: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 git2-el
+.PHONY : git2-el
 
 # fast build rule for target.
-git2_el/fast:
-	$(MAKE) -f src/CMakeFiles/git2_el.dir/build.make src/CMakeFiles/git2_el.dir/build
-.PHONY : git2_el/fast
+git2-el/fast:
+	$(MAKE) -f src/CMakeFiles/git2-el.dir/build.make src/CMakeFiles/git2-el.dir/build
+.PHONY : git2-el/fast
 
 # Help Target
 help:
@@ -181,7 +181,7 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... git2_el"
+	@echo "... git2-el"
 .PHONY : help
 
 

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5.1)
-project(libgit2_el LANGUAGES C)
+project(libgit2-el LANGUAGES C)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 set(CMAKE_POSITION_INDEPENDENT_CODE TRUE CACHE BOOL "pic" FORCE)
@@ -17,7 +17,7 @@ include_directories($ENV{HOME}/.local/include)
 link_directories($ENV{HOME}/.local/lib)
 
 add_subdirectory(src)
-install(TARGETS git2_el)
+install(TARGETS git2-el)
 
 if(BUILD_TESTS)
 	enable_testing()
@@ -59,11 +59,11 @@ if(BUILD_TESTS)
 	endif(CMAKE_BUILD_TYPE STREQUAL "Debug")
 
 	foreach(test ${EGIT_TESTS})
-	  add_test(NAME libgit2_el_${test} COMMAND
+	  add_test(NAME libgit2-el_${test} COMMAND
 	    emacs --batch
 		  -L "${CMAKE_CURRENT_BINARY_DIR}"
 		  -L "${CMAKE_CURRENT_SOURCE_DIR}/test"
-		  -l libgit2_el
+		  -l libgit2-el
 		  -l test-helper
 		  -l ${test}-test
 		  -f ert-run-tests-batch-and-exit)
