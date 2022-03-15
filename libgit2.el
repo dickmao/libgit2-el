@@ -28,61 +28,44 @@
 
 ;;; Code:
 
-(defvar libgit2--build-dir
+(defconst libgit2-buffer-name "*libgit build*")
+
+(defvar libgit2-build-dir
   (expand-file-name "build" (file-name-directory (or (locate-library "libgit2")
-                                                     load-file-name)))
-  "Directory where the libgit2-el dynamic module file should be built.")
+                                                     load-file-name))))
 
-(defvar libgit2--module-file
-  (expand-file-name "libgit2-el.so" libgit2--build-dir)
-  "Path to the libgit2-el dynamic module file.")
-
-(defun libgit2--configure ()
-  "Run the configure step of libgit2-el asynchronously.
-
-On successful exit, pass control on to the build step."
-  (make-directory libgit2--build-dir 'parents)
-  (let ((default-directory libgit2--build-dir))
-    (set-process-sentinel
-     (start-process "libgit2-cmake" "*libgit build*" "cmake" "..")
-     (lambda (proc _event)
-       (when (eq 'exit (process-status proc))
-         (if (zerop (process-exit-status proc))
-             (libgit2--build)
-           (pop-to-buffer "*libgit build*")
-           (error "libgit: configuring failed with exit code %d"
-                  (process-exit-status proc))))))))
-
-(defun libgit2--build ()
-  "Run the build step of libgit2-el asynchronously.
-
-On successful exit, pass control on to the load step."
-  (let ((default-directory libgit2--build-dir))
-    (set-process-sentinel
-     (apply #'start-process "libgit2-cmake" "*libgit build*" "cmake"
-             (split-string "--build .. --target install"))
-     (lambda (proc _event)
-       (when (eq 'exit (process-status proc))
-         (if (zerop (process-exit-status proc))
-             (libgit2--load)
-           (pop-to-buffer "*libgit build*")
-           (error "libgit: building failed with exit code %d" (process-exit-status proc))))))))
-
-(defun libgit2--load ()
-  "Load the `libgit2-el' dynamic module.
-If that fails, then raise an error."
-  (unless (featurep 'libgit2)
-    (load libgit2--module-file nil t t))
-  (unless (featurep 'libgit2)
-    (error "libgit: unable to load the libgit2-el dynamic module")))
+(defvar libgit2-module-file
+  (expand-file-name "libgit2-el.so" libgit2-build-dir))
 
 ;;;###autoload
 (defun libgit2-load ()
-  "Load the `libgit2-el' dynamic module."
   (interactive)
-  (if (file-exists-p libgit2--module-file)
-      (libgit2--load)
-    (libgit2--configure)))
+  (make-directory libgit2-build-dir 'parents)
+  (unless (featurep 'libgit2)
+    (if (file-exists-p libgit2-module-file)
+        (load libgit2-module-file nil t t)
+      (let ((default-directory libgit2-build-dir))
+        (set-process-sentinel
+         (start-process "libgit2-build" libgit2-buffer-name "cmake" "..")
+         (lambda (proc _event)
+           (when (eq 'exit (process-status proc))
+             (if (not (zerop (process-exit-status proc)))
+                 (progn
+                   (pop-to-buffer libgit2-buffer-name)
+                   (error "libgit: configuring failed with code %d"
+                          (process-exit-status proc)))
+               (let ((default-directory libgit2-build-dir))
+                 (set-process-sentinel
+                  (apply #'start-process "libgit2-build" libgit2-buffer-name "cmake"
+                         (split-string "--build . --target install"))
+                  (lambda (proc _event)
+                    (when (eq 'exit (process-status proc))
+                      (if (not (zerop (process-exit-status proc)))
+                          (progn
+                            (pop-to-buffer libgit2-buffer-name)
+                            (error "libgit: building failed with exit code %d"
+                                   (process-exit-status proc)))
+                        (load libgit2-module-file nil t t))))))))))))))
 
 (libgit2-load)
 
