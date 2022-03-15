@@ -43,7 +43,7 @@ emacs_value egit_treebuilder_entrycount(emacs_env *env, emacs_value _builder)
 
 EGIT_DOC(treebuilder_get, "BUILDER PATH",
          "Get the entry in BUILDER associated with PATH.\n"
-         "See `libgit-tree-entry-byindex' for more information.");
+         "See `libgit2-tree-entry-byindex' for more information.");
 emacs_value egit_treebuilder_get(emacs_env *env, emacs_value _builder, emacs_value _path)
 {
     EGIT_ASSERT_TREEBUILDER(_builder);
@@ -154,7 +154,7 @@ static int filter_callback(const git_tree_entry *entry, void *payload)
 EGIT_DOC(treebuilder_filter, "BUILDER FUNC",
          "Call FUNC on each entry of BUILDER.\n"
          "Those entries for which FUNC returns nil will be removed.\n"
-         "See `libgit-tree-entry-byindex' for more information.\n"
+         "See `libgit2-tree-entry-byindex' for more information.\n"
          "Signals thrown in FUNC will be ignored.");
 emacs_value egit_treebuilder_filter(emacs_env *env, emacs_value _builder, emacs_value func)
 {

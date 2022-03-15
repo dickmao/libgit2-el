@@ -7,16 +7,16 @@
     (commit-change "d" "abc")
     (commit-change "e" "abc")
     (commit-change "f" "abc")
-    (let* ((repo (libgit-repository-open path))
-           (walk (libgit-revwalk-new repo))
-           (head (libgit-revparse-single repo "HEAD"))
+    (let* ((repo (libgit2-repository-open path))
+           (walk (libgit2-revwalk-new repo))
+           (head (libgit2-revparse-single repo "HEAD"))
            seen)
-      (libgit-revwalk-push-head walk)
-      (libgit-revwalk-foreach walk (lambda (id) (push id seen)))
+      (libgit2-revwalk-push-head walk)
+      (libgit2-revwalk-foreach walk (lambda (id) (push id seen)))
       (should (equal (reverse seen)
                      (cl-loop for i below 6
-                              collect (libgit-commit-id
-                                       (libgit-commit-nth-gen-ancestor head i))))))))
+                              collect (libgit2-commit-id
+                                       (libgit2-commit-nth-gen-ancestor head i))))))))
 
 (ert-deftest revwalk-hidden ()
   (with-temp-dir path
@@ -27,18 +27,18 @@
     (commit-change "d" "abc")
     (commit-change "e" "abc")
     (commit-change "f" "abc")
-    (let* ((repo (libgit-repository-open path))
-           (walk (libgit-revwalk-new repo))
-           (head (libgit-revparse-single repo "HEAD"))
+    (let* ((repo (libgit2-repository-open path))
+           (walk (libgit2-revwalk-new repo))
+           (head (libgit2-revparse-single repo "HEAD"))
            seen)
-      (libgit-revwalk-push-head walk)
-      (libgit-revwalk-hide walk (libgit-commit-id
-                                 (libgit-commit-nth-gen-ancestor head 3)))
-      (libgit-revwalk-foreach walk (lambda (id) (push id seen)))
+      (libgit2-revwalk-push-head walk)
+      (libgit2-revwalk-hide walk (libgit2-commit-id
+                                 (libgit2-commit-nth-gen-ancestor head 3)))
+      (libgit2-revwalk-foreach walk (lambda (id) (push id seen)))
       (should (equal (reverse seen)
                      (cl-loop for i below 3
-                              collect (libgit-commit-id
-                                       (libgit-commit-nth-gen-ancestor head i))))))))
+                              collect (libgit2-commit-id
+                                       (libgit2-commit-nth-gen-ancestor head i))))))))
 
 (ert-deftest revwalk-range ()
   (with-temp-dir path
@@ -49,19 +49,19 @@
     (commit-change "d" "abc")
     (commit-change "e" "abc")
     (commit-change "f" "abc")
-    (let* ((repo (libgit-repository-open path))
-           (walk (libgit-revwalk-new repo))
-           (head (libgit-revparse-single repo "HEAD"))
+    (let* ((repo (libgit2-repository-open path))
+           (walk (libgit2-revwalk-new repo))
+           (head (libgit2-revparse-single repo "HEAD"))
            seen)
-      (libgit-revwalk-push-range
+      (libgit2-revwalk-push-range
        walk
-       (concat (libgit-commit-id (libgit-commit-nth-gen-ancestor head 3))
-               ".." (libgit-commit-id head)))
-      (libgit-revwalk-foreach walk (lambda (id) (push id seen)))
+       (concat (libgit2-commit-id (libgit2-commit-nth-gen-ancestor head 3))
+               ".." (libgit2-commit-id head)))
+      (libgit2-revwalk-foreach walk (lambda (id) (push id seen)))
       (should (equal (reverse seen)
                      (cl-loop for i below 3
-                              collect (libgit-commit-id
-                                       (libgit-commit-nth-gen-ancestor head i))))))))
+                              collect (libgit2-commit-id
+                                       (libgit2-commit-nth-gen-ancestor head i))))))))
 
 (ert-deftest revwalk-hide-callback ()
   (with-temp-dir path
@@ -72,18 +72,18 @@
     (commit-change "d" "abc")
     (commit-change "e" "abc")
     (commit-change "f" "abc")
-    (let* ((repo (libgit-repository-open path))
-           (walk (libgit-revwalk-new repo))
-           (head (libgit-revparse-single repo "HEAD"))
+    (let* ((repo (libgit2-repository-open path))
+           (walk (libgit2-revwalk-new repo))
+           (head (libgit2-revparse-single repo "HEAD"))
            seen)
-      (libgit-revwalk-push-head walk)
-      (libgit-revwalk-foreach
+      (libgit2-revwalk-push-head walk)
+      (libgit2-revwalk-foreach
        walk
        (lambda (id) (push id seen))
        (lambda (id)
-         (string= id (libgit-commit-id
-                      (libgit-commit-nth-gen-ancestor head 3)))))
+         (string= id (libgit2-commit-id
+                      (libgit2-commit-nth-gen-ancestor head 3)))))
       (should (equal (reverse seen)
                      (cl-loop for i below 3
-                              collect (libgit-commit-id
-                                       (libgit-commit-nth-gen-ancestor head i))))))))
+                              collect (libgit2-commit-id
+                                       (libgit2-commit-nth-gen-ancestor head i))))))))

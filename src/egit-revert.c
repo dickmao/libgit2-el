@@ -12,8 +12,8 @@
 EGIT_DOC(revert, "REPO COMMIT &optional MERGE-OPTIONS CHECKOUT-OPTIONS MAINLINE",
          "Reverts the given COMMIT, producing changes in the index and "
          "working directory.\n"
-         "For MERGE-OPTIONS, see `libgit-merge'\n"
-         "For CHECKOUT-OPTIONS, see `libgit-checkout-head'.\n"
+         "For MERGE-OPTIONS, see `libgit2-merge'\n"
+         "For CHECKOUT-OPTIONS, see `libgit2-checkout-head'.\n"
          "For merge commits, the MAINLINE is treated as the parent.");
 emacs_value egit_revert(emacs_env *env, emacs_value _repo, emacs_value _commit,
                         emacs_value _merge_opts, emacs_value _checkout_opts,
@@ -52,7 +52,7 @@ emacs_value egit_revert(emacs_env *env, emacs_value _repo, emacs_value _commit,
 EGIT_DOC(revert_commit, "REPO REVERT-COMMIT OUR-COMMIT &optional MERGE-OPTIONS MAINLINE",
          "Reverts the given REVERT-COMMIT against the given OUR-COMMIT commit, "
          "returns an index object that reflects the result of the revert.\n"
-         "For MERGE-OPTIONS, see `libgit-merge'.\n"
+         "For MERGE-OPTIONS, see `libgit2-merge'.\n"
          "For merge commits, the MAINLINE is treated as the parent.");
 emacs_value egit_revert_commit(emacs_env *env, emacs_value _repo,
                                emacs_value _revert_commit,

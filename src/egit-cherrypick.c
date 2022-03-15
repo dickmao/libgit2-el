@@ -12,8 +12,8 @@
 EGIT_DOC(cherrypick, "REPO COMMIT &optional MERGE-OPTIONS CHECKOUT-OPTIONS MAINLINE",
          "Cherry-pick the given COMMIT, producing changes in the index and "
          "working directory.\n"
-         "For MERGE-OPTIONS, see `libgit-merge'\n"
-         "For CHECKOUT-OPTIONS, see `libgit-checkout-head'.\n"
+         "For MERGE-OPTIONS, see `libgit2-merge'\n"
+         "For CHECKOUT-OPTIONS, see `libgit2-checkout-head'.\n"
          "For merge commits, the MAINLINE is treated as the parent.");
 emacs_value egit_cherrypick(emacs_env *env,
                             emacs_value _repo,
@@ -55,7 +55,7 @@ emacs_value egit_cherrypick(emacs_env *env,
 EGIT_DOC(cherrypick_commit, "REPO CHERRYPICK-COMMIT OUR-COMMIT &optional MERGE-OPTIONS MAINLINE",
          "Cherry-pick the given CHERRYPICK-COMMIT against the given OUR-COMMIT commit, "
          "returns an index object that reflects the result of the revert.\n"
-         "For MERGE-OPTIONS, see `libgit-merge'.\n"
+         "For MERGE-OPTIONS, see `libgit2-merge'.\n"
          "For merge commits, the MAINLINE is treated as the parent.");
 emacs_value egit_cherrypick_commit(emacs_env *env, emacs_value _repo,
                                    emacs_value _cherrypick_commit,

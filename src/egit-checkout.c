@@ -62,7 +62,7 @@ emacs_value egit_checkout_head(emacs_env *env, emacs_value _repo, emacs_value op
 
 EGIT_DOC(checkout_index, "REPO &optional INDEX OPTIONS",
          "Update files in the working tree of REPO to match the content of INDEX.\n"
-         "See `libgit-checkout-head' for details on OPTIONS.");
+         "See `libgit2-checkout-head' for details on OPTIONS.");
 emacs_value egit_checkout_index(emacs_env *env, emacs_value _repo, emacs_value _index, emacs_value opts)
 {
     EGIT_ASSERT_REPOSITORY(_repo);
@@ -81,13 +81,13 @@ emacs_value egit_checkout_index(emacs_env *env, emacs_value _repo, emacs_value _
 
 EGIT_DOC(checkout_tree, "REPO &optional TREEISH OPTIONS",
          "Update files in the index and working tree of REPO to match the content of TREEISH.\n"
-         "See `libgit-checkout-head' for details on OPTIONS.");
+         "See `libgit2-checkout-head' for details on OPTIONS.");
 emacs_value egit_checkout_tree(emacs_env *env, emacs_value _repo, emacs_value _treeish, emacs_value opts)
 {
     EGIT_ASSERT_REPOSITORY(_repo);
 
     // TODO: Do we need treeish assertions enough to make a macro?
-    // Do we need to define a libgit-treeish-p?
+    // Do we need to define a libgit2-treeish-p?
     // If so, should it peel tags to confirm that the target actually is a tree or a commit?
     if (EM_EXTRACT_BOOLEAN(_treeish)) {
         egit_type treeish_type = egit_get_type(env, _treeish);

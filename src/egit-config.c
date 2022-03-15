@@ -92,7 +92,7 @@ emacs_value egit_config_snapshot(emacs_env *env, emacs_value _config)
 
 EGIT_DOC(config_get_bool, "CONFIG NAME",
          "Get the value of NAME in CONFIG as a boolean (`t' or `nil').\n"
-         "CONFIG must be a snapshot, see `libgit-config-snapshot'.");
+         "CONFIG must be a snapshot, see `libgit2-config-snapshot'.");
 emacs_value egit_config_get_bool(emacs_env *env, emacs_value _config, emacs_value _name)
 {
     EGIT_ASSERT_CONFIG(_config);
@@ -108,7 +108,7 @@ emacs_value egit_config_get_bool(emacs_env *env, emacs_value _config, emacs_valu
 
 EGIT_DOC(config_get_int, "CONFIG NAME",
          "Get the value of NAME in CONFIG as an integer.\n"
-         "CONFIG must be a snapshot, see `libgit-config-snapshot'.");
+         "CONFIG must be a snapshot, see `libgit2-config-snapshot'.");
 emacs_value egit_config_get_int(emacs_env *env, emacs_value _config, emacs_value _name)
 {
     EGIT_ASSERT_CONFIG(_config);
@@ -124,9 +124,9 @@ emacs_value egit_config_get_int(emacs_env *env, emacs_value _config, emacs_value
 
 EGIT_DOC(config_get_path, "CONFIG NAME",
          "Get the value of NAME in CONFIG as a string path.\n"
-         "This is similar to `libgit-config-get-string' except the path\n"
+         "This is similar to `libgit2-config-get-string' except the path\n"
          "is automatically normalized.\n"
-         "CONFIG must be a snapshot, see `libgit-config-snapshot'.");
+         "CONFIG must be a snapshot, see `libgit2-config-snapshot'.");
 emacs_value egit_config_get_path(emacs_env *env, emacs_value _config, emacs_value _name)
 {
     EGIT_ASSERT_CONFIG(_config);
@@ -149,7 +149,7 @@ emacs_value egit_config_get_path(emacs_env *env, emacs_value _config, emacs_valu
 
 EGIT_DOC(config_get_string, "CONFIG NAME",
          "Get the value of NAME in CONFIG as a string.\n"
-         "CONFIG must be a snapshot, see `libgit-config-snapshot'.");
+         "CONFIG must be a snapshot, see `libgit2-config-snapshot'.");
 emacs_value egit_config_get_string(emacs_env *env, emacs_value _config, emacs_value _name)
 {
     EGIT_ASSERT_CONFIG(_config);

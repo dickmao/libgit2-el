@@ -182,7 +182,7 @@ EGIT_DOC(tree_walk, "TREE ORDER FUNCTION",
          "ORDER may be either `pre' or `post', giving the tree travelsar order.\n\n"
          "FUNCTION is called with two arguments: PATH and ENTRY.\n"
          "  - PATH is the path relative to the repository root\n"
-         "  - ENTRY is a tree entry (see `libgit-tree-entry-byindex')\n\n"
+         "  - ENTRY is a tree entry (see `libgit2-tree-entry-byindex')\n\n"
          "If FUNCTION returns the symbol `skip' (in pre-order traversal),\n"
          "the passed entry will be skipped on the traversal.");
 emacs_value egit_tree_walk(emacs_env *env, emacs_value _tree, emacs_value order, emacs_value function)

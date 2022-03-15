@@ -2,31 +2,31 @@
   (with-temp-dir path
     (init)
     (commit-change "test" "contents")
-    (let ((repo (libgit-repository-open path))
+    (let ((repo (libgit2-repository-open path))
           (id (read-file-nnl ".git/refs/heads/master")))
-      (libgit-reference-create repo "OMFG" id)
+      (libgit2-reference-create repo "OMFG" id)
       (should (string= id (read-file-nnl ".git/OMFG")))
-      (libgit-reference-create repo "refs/something" id)
+      (libgit2-reference-create repo "refs/something" id)
       (should (string= id (read-file-nnl ".git/refs/something")))
-      (should-error (libgit-reference-create repo "OMFG" id) :type 'giterr-reference)
-      (libgit-reference-create repo "OMFG" id 'force)
+      (should-error (libgit2-reference-create repo "OMFG" id) :type 'giterr-reference)
+      (libgit2-reference-create repo "OMFG" id 'force)
       (should (string= id (read-file-nnl ".git/OMFG"))))))
 
 (ert-deftest reference-create-matching ()
   (with-temp-dir path
     (init)
     (commit-change "test" "contents")
-    (let ((repo (libgit-repository-open path))
+    (let ((repo (libgit2-repository-open path))
           (current-id (read-file-nnl ".git/refs/heads/master")))
-      (libgit-reference-create-matching repo "OMFG" current-id)
+      (libgit2-reference-create-matching repo "OMFG" current-id)
       (commit-change "test" "contents2")
       (let ((new-id (read-file-nnl ".git/refs/heads/master")))
-        (should-error (libgit-reference-create-matching repo "OMFG" new-id) :type 'giterr-reference)
-        (libgit-reference-create-matching repo "OMFG" new-id 'force)
+        (should-error (libgit2-reference-create-matching repo "OMFG" new-id) :type 'giterr-reference)
+        (libgit2-reference-create-matching repo "OMFG" new-id 'force)
         (should (string= new-id (read-file-nnl ".git/OMFG")))
-        (libgit-reference-create-matching repo "OMFG" current-id 'force new-id)
+        (libgit2-reference-create-matching repo "OMFG" current-id 'force new-id)
         (should (string= current-id (read-file-nnl ".git/OMFG")))
-        (should-error (libgit-reference-create-matching
+        (should-error (libgit2-reference-create-matching
                        repo "OMFG" new-id 'force (substring current-id 1))
                       :type 'giterr-reference)))))
 
@@ -42,20 +42,20 @@
   (with-temp-dir path
     (init)
     (commit-change "test" "contents")
-    (let* ((repo (libgit-repository-open path)))
-      (libgit-reference-lookup repo "refs/heads/master")
-      (libgit-reference-lookup repo "HEAD")
-      (should-error (libgit-reference-lookup repo "nonexistent" :type 'giterr-invalid)))))
+    (let* ((repo (libgit2-repository-open path)))
+      (libgit2-reference-lookup repo "refs/heads/master")
+      (libgit2-reference-lookup repo "HEAD")
+      (should-error (libgit2-reference-lookup repo "nonexistent" :type 'giterr-invalid)))))
 
 (ert-deftest reference-list ()
   (with-temp-dir path
     (init)
     (commit-change "test" "contents")
-    (let* ((repo (libgit-repository-open path))
+    (let* ((repo (libgit2-repository-open path))
            (id (read-file-nnl ".git/refs/heads/master")))
-      (libgit-reference-create repo "OMFG" id)
-      (libgit-reference-create repo "refs/something" id)
-      (let ((refs (libgit-reference-list repo)))
+      (libgit2-reference-create repo "OMFG" id)
+      (libgit2-reference-create repo "refs/something" id)
+      (let ((refs (libgit2-reference-list repo)))
         (should (member "refs/heads/master" refs))
         (should (member "refs/something" refs))
         (should (= 2 (length refs)))))))
@@ -64,20 +64,20 @@
   (with-temp-dir path
     (init)
     (commit-change "test" "contents")
-    (let ((repo (libgit-repository-open path)))
-      (should (string= "HEAD" (libgit-reference-name (libgit-reference-lookup repo "HEAD"))))
+    (let ((repo (libgit2-repository-open path)))
+      (should (string= "HEAD" (libgit2-reference-name (libgit2-reference-lookup repo "HEAD"))))
       (should (string= "refs/heads/master"
-                       (libgit-reference-name (libgit-reference-lookup repo "refs/heads/master")))))))
+                       (libgit2-reference-name (libgit2-reference-lookup repo "refs/heads/master")))))))
 
 (ert-deftest reference-name-to-id ()
   (with-temp-dir path
     (init)
     (commit-change "test" "contents")
-    (let* ((repo (libgit-repository-open path)))
+    (let* ((repo (libgit2-repository-open path)))
       (should (string= (read-file-nnl ".git/refs/heads/master")
-                       (libgit-reference-name-to-id repo "refs/heads/master")))
+                       (libgit2-reference-name-to-id repo "refs/heads/master")))
       (should (string= (read-file-nnl ".git/refs/heads/master")
-                       (libgit-reference-name-to-id repo "HEAD"))))))
+                       (libgit2-reference-name-to-id repo "HEAD"))))))
 
 (ert-deftest reference-owner ()
   ;; TODO
@@ -162,11 +162,11 @@
     (run "git" "checkout" "-b" "zamg")
     (run "git" "checkout" "-b" "zemg")
     (run "git" "checkout" "-b" "zomg")
-    (let* ((repo (libgit-repository-open path))
+    (let* ((repo (libgit2-repository-open path))
            data)
-      (libgit-reference-foreach repo (lambda (ref)
-                                       (should (libgit-reference-p ref))
-                                       (push (libgit-reference-name ref) data)))
+      (libgit2-reference-foreach repo (lambda (ref)
+                                       (should (libgit2-reference-p ref))
+                                       (push (libgit2-reference-name ref) data)))
       (should (equal (reverse data)
                      '("refs/heads/master"
                        "refs/heads/zamg"
@@ -181,9 +181,9 @@
     (run "git" "checkout" "-b" "zemg")
     (run "git" "checkout" "-b" "zomg")
     (run "git" "checkout" "-b" "nope")
-    (let* ((repo (libgit-repository-open path))
+    (let* ((repo (libgit2-repository-open path))
            data)
-      (libgit-reference-foreach-glob
+      (libgit2-reference-foreach-glob
        repo "refs/heads/z*mg"
        (lambda (refname) (push refname data)))
       (should (equal (reverse data)
@@ -198,9 +198,9 @@
     (run "git" "checkout" "-b" "zamg")
     (run "git" "checkout" "-b" "zemg")
     (run "git" "checkout" "-b" "zomg")
-    (let* ((repo (libgit-repository-open path))
+    (let* ((repo (libgit2-repository-open path))
            data)
-      (libgit-reference-foreach-name repo (lambda (refname) (push refname data)))
+      (libgit2-reference-foreach-name repo (lambda (refname) (push refname data)))
       (should (equal (reverse data)
                      '("refs/heads/master"
                        "refs/heads/zamg"

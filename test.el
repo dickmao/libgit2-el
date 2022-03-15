@@ -8,7 +8,7 @@
 
 (defun my-credentials (url username allowed-types)
   (message "Supplying credentials...")
-  (libgit-cred-ssh-key-from-agent username))
+  (libgit2-cred-ssh-key-from-agent username))
 
 (defun my-transfer-progress (obj-total
                              obj-indexed
@@ -20,9 +20,9 @@
   (message "Received: %s/%s (%s bytes)" obj-received obj-total bytes-received))
 
 (let* ((path "~/test")
-       (repo (libgit-repository-init path))
-       (remote (libgit-remote-create repo "origin" "git@github.com:TheBB/dotemacs")))
-  (libgit-remote-fetch
+       (repo (libgit2-repository-init path))
+       (remote (libgit2-remote-create repo "origin" "git@github.com:TheBB/dotemacs")))
+  (libgit2-remote-fetch
    remote nil
    '((callbacks
       (sideband-progress . my-sideband-progress)

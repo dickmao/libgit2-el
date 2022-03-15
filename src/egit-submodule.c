@@ -131,10 +131,10 @@ emacs_value egit_submodule_index_id(emacs_env *env, emacs_value _sub)
 
 EGIT_DOC(submodule_location, "SUBMODULE &optional FLAG",
          "Get the location of SUBMODULE.\n"
-         "This is a lightweight version of `libgit-submodule-status',\n"
+         "This is a lightweight version of `libgit2-submodule-status',\n"
          "only checking the first four status values: `in-head', `in-index',\n"
          "`in-config' and `in-wd'.\n\n"
-         "See `libgit-submodule-status' for an explanation of FLAG.");
+         "See `libgit2-submodule-status' for an explanation of FLAG.");
 emacs_value egit_submodule_location(emacs_env *env, emacs_value _sub, emacs_value flag)
 {
     EGIT_ASSERT_SUBMODULE(_sub);
@@ -210,8 +210,8 @@ EGIT_DOC(submodule_status, "REPO NAME &optional IGNORE FLAG",
          "If the optional FLAG is non-nil, it may be any of the above symbols,\n"
          "in which case the return value is non-nil if that flag is present.\n"
          "In other words, these are equivalent:\n\n"
-         "(libgit-submodule-status REPO NAME IGNORE FLAG)\n\n"
-         "(memq FLAG (libgit-submodule-status REPO NAME IGNORE))");
+         "(libgit2-submodule-status REPO NAME IGNORE FLAG)\n\n"
+         "(memq FLAG (libgit2-submodule-status REPO NAME IGNORE))");
 emacs_value egit_submodule_status(
     emacs_env *env, emacs_value _repo, emacs_value _name,
     emacs_value _ignore, emacs_value flag)
@@ -309,7 +309,7 @@ emacs_value egit_submodule_foreach(emacs_env *env, emacs_value _repo, emacs_valu
 
 EGIT_DOC(submodule_add_finalize, "SUBMODULE",
          "Resolve the setup of SUBMODULE.\n"
-         "This should be called after `libgit-add-setup', and after clone.");
+         "This should be called after `libgit2-add-setup', and after clone.");
 emacs_value egit_submodule_add_finalize(emacs_env *env, emacs_value _sub)
 {
     EGIT_ASSERT_SUBMODULE(_sub);
@@ -372,7 +372,7 @@ emacs_value egit_submodule_repo_init(emacs_env *env, emacs_value _sub, emacs_val
 
 EGIT_DOC(submodule_set_branch, "REPO NAME BRANCHNAME",
          "Set the branch of submodule NAME to BRANCHNAME.\n"
-         "After this, you may wish to call `libgit-submodule-sync'.");
+         "After this, you may wish to call `libgit2-submodule-sync'.");
 emacs_value egit_submodule_set_branch(
     emacs_env *env, emacs_value _repo, emacs_value _name, emacs_value _refname)
 {
@@ -459,7 +459,7 @@ emacs_value egit_submodule_set_update(
 
 EGIT_DOC(submodule_set_url, "REPO NAME URL",
          "Set the URL of submodule NAME to URL.\n"
-         "After this, you may wish to call `libgit-submodule-sync'.");
+         "After this, you may wish to call `libgit2-submodule-sync'.");
 emacs_value egit_submodule_set_url(
     emacs_env *env, emacs_value _repo, emacs_value _name, emacs_value _url)
 {
@@ -495,8 +495,8 @@ EGIT_DOC(submodule_update, "SUBMODULE &optional INITP FETCHP CHECKOUT-OPTS FETCH
          "If INITP is non-nil, initialize the submodule if not already done.\n"
          "If FETCHP is non-nil, fetch from the remote if the subrepo does not\n"
          "contain the desired commit.\n"
-         "For CHECKOUT-OPTS, see `libgit-checkout-head', and for FETCH-OPTS,\n"
-         "see `libgit-remote-fetch'.");
+         "For CHECKOUT-OPTS, see `libgit2-checkout-head', and for FETCH-OPTS,\n"
+         "see `libgit2-remote-fetch'.");
 emacs_value egit_submodule_update(
     emacs_env *env, emacs_value _sub, emacs_value initp, emacs_value fetchp,
     emacs_value checkout_opts, emacs_value fetch_opts)

@@ -119,7 +119,7 @@ emacs_value egit_checkout_options_parse(emacs_env *env, emacs_value alist, git_c
             else if (type == EGIT_INDEX)
                 opts->baseline_index = EGIT_EXTRACT(cdr);
             else {
-                // TODO: libgit-tree-or-index-p?
+                // TODO: libgit2-tree-or-index-p?
                 em_signal_wrong_type(env, esym_libgit_tree_p, cdr);
                 return esym_nil;
             }

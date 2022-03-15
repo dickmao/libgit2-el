@@ -7,13 +7,13 @@
     (commit-change "a" "content-a2")
     (checkout "master")
 
-    (let* ((repo (libgit-repository-open path))
+    (let* ((repo (libgit2-repository-open path))
 	   (cherrypick-commit
-	    (libgit-commit-lookup
+	    (libgit2-commit-lookup
 	     repo
-	     (libgit-reference-name-to-id repo "refs/heads/foo"))))
+	     (libgit2-reference-name-to-id repo "refs/heads/foo"))))
       (should (string= "content-a1" (read-file "a")))
-      (libgit-cherrypick repo cherrypick-commit)
+      (libgit2-cherrypick repo cherrypick-commit)
       (should (string= "content-a2" (read-file "a")))))
 
   ;; Merge - 1st parent
@@ -29,14 +29,14 @@
     (merge "src-1")
     (checkout "master")
 
-    (let* ((repo (libgit-repository-open path))
+    (let* ((repo (libgit2-repository-open path))
 	   (merge-commit
-	    (libgit-commit-lookup
+	    (libgit2-commit-lookup
 	     repo
-	     (libgit-reference-name-to-id repo "refs/heads/src-2"))))
+	     (libgit2-reference-name-to-id repo "refs/heads/src-2"))))
       (should (string= "init" (read-file "a")))
       (should (string= "init" (read-file "b")))
-      (libgit-cherrypick repo merge-commit nil nil 1)
+      (libgit2-cherrypick repo merge-commit nil nil 1)
       (should (string= "content-src-1" (read-file "a")))
       (should (string= "init" (read-file "b")))))
 
@@ -53,14 +53,14 @@
     (merge "src-1")
     (checkout "master")
 
-    (let* ((repo (libgit-repository-open path))
+    (let* ((repo (libgit2-repository-open path))
 	   (merge-commit
-	    (libgit-commit-lookup
+	    (libgit2-commit-lookup
 	     repo
-	     (libgit-reference-name-to-id repo "refs/heads/src-2"))))
+	     (libgit2-reference-name-to-id repo "refs/heads/src-2"))))
       (should (string= "init" (read-file "a")))
       (should (string= "init" (read-file "b")))
-      (libgit-cherrypick repo merge-commit nil nil 2)
+      (libgit2-cherrypick repo merge-commit nil nil 2)
       (should (string= "init" (read-file "a")))
       (should (string= "content-src-2" (read-file "b"))))))
 
@@ -73,19 +73,19 @@
     (commit-change "a" "content-a2")
     (checkout "master")
 
-    (let* ((repo (libgit-repository-open path))
+    (let* ((repo (libgit2-repository-open path))
 	   (cherrypick-commit
-	    (libgit-commit-lookup
+	    (libgit2-commit-lookup
 	     repo
-	     (libgit-reference-name-to-id repo "refs/heads/foo")))
+	     (libgit2-reference-name-to-id repo "refs/heads/foo")))
 	   (our-commit
-	    (libgit-commit-lookup
+	    (libgit2-commit-lookup
 	     repo
-	     (libgit-reference-name-to-id repo "HEAD"))))
-      ;; libgit-cherrypick-commit should return an index without any
+	     (libgit2-reference-name-to-id repo "HEAD"))))
+      ;; libgit2-cherrypick-commit should return an index without any
       ;; changes on disk.
       (should (string= "content-a1" (read-file "a")))
-      (libgit-cherrypick-commit repo cherrypick-commit our-commit)
+      (libgit2-cherrypick-commit repo cherrypick-commit our-commit)
       (should (string= "content-a1" (read-file "a")))))
 
   ;; Merge - 1st parent
@@ -101,18 +101,18 @@
     (merge "src-1")
     (checkout "master")
 
-    (let* ((repo (libgit-repository-open path))
+    (let* ((repo (libgit2-repository-open path))
   	   (merge-commit
-  	    (libgit-commit-lookup
+  	    (libgit2-commit-lookup
   	     repo
-  	     (libgit-reference-name-to-id repo "refs/heads/src-2")))
+  	     (libgit2-reference-name-to-id repo "refs/heads/src-2")))
   	   (our-commit
-  	    (libgit-commit-lookup
+  	    (libgit2-commit-lookup
   	     repo
-  	     (libgit-reference-name-to-id repo "HEAD"))))
+  	     (libgit2-reference-name-to-id repo "HEAD"))))
       (should (string= "init" (read-file "a")))
       (should (string= "init" (read-file "b")))
-      (libgit-cherrypick-commit repo merge-commit our-commit nil 1)
+      (libgit2-cherrypick-commit repo merge-commit our-commit nil 1)
       (should (string= "init" (read-file "a")))
       (should (string= "init" (read-file "b")))))
 
@@ -129,17 +129,17 @@
     (merge "src-1")
     (checkout "master")
 
-    (let* ((repo (libgit-repository-open path))
+    (let* ((repo (libgit2-repository-open path))
   	   (merge-commit
-  	    (libgit-commit-lookup
+  	    (libgit2-commit-lookup
   	     repo
-  	     (libgit-reference-name-to-id repo "refs/heads/src-2")))
+  	     (libgit2-reference-name-to-id repo "refs/heads/src-2")))
   	   (our-commit
-  	    (libgit-commit-lookup
+  	    (libgit2-commit-lookup
   	     repo
-  	     (libgit-reference-name-to-id repo "HEAD"))))
+  	     (libgit2-reference-name-to-id repo "HEAD"))))
       (should (string= "init" (read-file "a")))
       (should (string= "init" (read-file "b")))
-      (libgit-cherrypick-commit repo merge-commit our-commit nil 2)
+      (libgit2-cherrypick-commit repo merge-commit our-commit nil 2)
       (should (string= "init" (read-file "a")))
       (should (string= "init" (read-file "b"))))))

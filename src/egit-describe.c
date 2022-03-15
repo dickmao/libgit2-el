@@ -126,7 +126,7 @@ emacs_value egit_describe_commit(emacs_env *env, emacs_value _committish, emacs_
 
 EGIT_DOC(describe_workdir, "REPO &optional OPTS",
          "Describe HEAD and the working directory, and return as string.\n"
-         "See `libgit-describe-commit' for a description of OPTS.");
+         "See `libgit2-describe-commit' for a description of OPTS.");
 emacs_value egit_describe_workdir(emacs_env *env, emacs_value _repo, emacs_value opts)
 {
     EGIT_ASSERT_REPOSITORY(_repo);

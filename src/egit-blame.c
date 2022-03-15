@@ -164,7 +164,7 @@ emacs_value egit_blame_hunk_lines(emacs_env *env, emacs_value _hunk)
 
 EGIT_DOC(blame_hunk_orig_path, "BLAME-HUNK",
          "Get the path of the file associated with BLAME-HUNK in the commit named by\n"
-         "(libgit-blame-hunk-commit-id BLAME-HUNK t).");
+         "(libgit2-blame-hunk-commit-id BLAME-HUNK t).");
 emacs_value egit_blame_hunk_orig_path(emacs_env *env, emacs_value _hunk)
 {
     EGIT_ASSERT_BLAME_HUNK(_hunk);
@@ -175,7 +175,7 @@ emacs_value egit_blame_hunk_orig_path(emacs_env *env, emacs_value _hunk)
 EGIT_DOC(blame_hunk_signature, "BLAME-HUNK &optional ORIG",
          "Get the author of the change represented by BLAME-HUNK.\n"
          "If ORIG is non-nil, instead get the author of the commit named by\n"
-         "(libgit-blame-hunk-commit-id BLAME-HUNK t).");
+         "(libgit2-blame-hunk-commit-id BLAME-HUNK t).");
 emacs_value egit_blame_hunk_signature(emacs_env *env, emacs_value _hunk, emacs_value orig)
 {
     EGIT_ASSERT_BLAME_HUNK(_hunk);
@@ -190,8 +190,8 @@ emacs_value egit_blame_hunk_signature(emacs_env *env, emacs_value _hunk, emacs_v
 EGIT_DOC(blame_hunk_start_line_number, "BLAME-HUNK &optional ORIG",
          "Get the line number where this hunk begins in the final version of the file.\n"
          "If ORIG is non-nil, instead get the line number from the file named by\n"
-         "(libgit-blame-hunk-orig-path BLAME-HUNK) in the commit named by\n"
-         "(libgit-blame-hunk-commit-id BLAME-HUNK t).");
+         "(libgit2-blame-hunk-orig-path BLAME-HUNK) in the commit named by\n"
+         "(libgit2-blame-hunk-commit-id BLAME-HUNK t).");
 emacs_value egit_blame_hunk_start_line_number(emacs_env *env, emacs_value _hunk, emacs_value orig)
 {
     EGIT_ASSERT_BLAME_HUNK(_hunk);

@@ -5,11 +5,11 @@
     (commit-change "a" "content-a1")
     (commit-change "a" "content-a2")
 
-    (let* ((repo (libgit-repository-open path))
+    (let* ((repo (libgit2-repository-open path))
 	   (revert-commit
-	    (libgit-commit-lookup
-	     repo (libgit-reference-name-to-id repo "HEAD"))))
-      (libgit-revert repo revert-commit)
+	    (libgit2-commit-lookup
+	     repo (libgit2-reference-name-to-id repo "HEAD"))))
+      (libgit2-revert repo revert-commit)
       (should (string= "content-a1" (read-file "a")))))
 
   ;; Merge - 1st parent
@@ -21,11 +21,11 @@
     (checkout "master")
     (merge "foo")
 
-    (let* ((repo (libgit-repository-open path))
+    (let* ((repo (libgit2-repository-open path))
 	   (revert-commit
-	    (libgit-commit-lookup
-	     repo (libgit-reference-name-to-id repo "HEAD"))))
-      (libgit-revert repo revert-commit nil nil 1)
+	    (libgit2-commit-lookup
+	     repo (libgit2-reference-name-to-id repo "HEAD"))))
+      (libgit2-revert repo revert-commit nil nil 1)
       (should (string= "content-a1" (read-file "a")))))
 
   ;; Merge - 2nd parent
@@ -37,11 +37,11 @@
     (checkout "master")
     (merge "foo")
 
-    (let* ((repo (libgit-repository-open path))
+    (let* ((repo (libgit2-repository-open path))
 	   (revert-commit
-	    (libgit-commit-lookup
-	     repo (libgit-reference-name-to-id repo "HEAD"))))
-      (libgit-revert repo revert-commit nil nil 2)
+	    (libgit2-commit-lookup
+	     repo (libgit2-reference-name-to-id repo "HEAD"))))
+      (libgit2-revert repo revert-commit nil nil 2)
       (should (string= "content-a2" (read-file "a"))))))
 
 (ert-deftest revert-commit ()
@@ -51,13 +51,13 @@
     (commit-change "a" "content-a1")
     (commit-change "a" "content-a2")
 
-    (let* ((repo (libgit-repository-open path))
+    (let* ((repo (libgit2-repository-open path))
 	   (revert-commit
-	    (libgit-commit-lookup
-	     repo (libgit-reference-name-to-id repo "HEAD")))
+	    (libgit2-commit-lookup
+	     repo (libgit2-reference-name-to-id repo "HEAD")))
 	   (our-commit revert-commit)
 	   (index ))
-      (should (libgit-revert-commit repo revert-commit our-commit))
+      (should (libgit2-revert-commit repo revert-commit our-commit))
       ;; index is in-memory, the file should not change
       (should (string= "content-a2" (read-file "a")))))
 
@@ -70,12 +70,12 @@
     (checkout "master")
     (merge "foo")
 
-    (let* ((repo (libgit-repository-open path))
+    (let* ((repo (libgit2-repository-open path))
 	   (revert-commit
-	    (libgit-commit-lookup
-	     repo (libgit-reference-name-to-id repo "HEAD")))
+	    (libgit2-commit-lookup
+	     repo (libgit2-reference-name-to-id repo "HEAD")))
 	   (our-commit revert-commit))
-      (should (libgit-revert-commit repo revert-commit our-commit nil 1))
+      (should (libgit2-revert-commit repo revert-commit our-commit nil 1))
       (should (string= "content-a2" (read-file "a")))))
 
   ;; Merge - 2nd parent
@@ -87,10 +87,10 @@
     (checkout "master")
     (merge "foo")
 
-    (let* ((repo (libgit-repository-open path))
+    (let* ((repo (libgit2-repository-open path))
 	   (revert-commit
-	    (libgit-commit-lookup
-	     repo (libgit-reference-name-to-id repo "HEAD")))
+	    (libgit2-commit-lookup
+	     repo (libgit2-reference-name-to-id repo "HEAD")))
 	   (our-commit revert-commit))
-      (should (libgit-revert-commit repo revert-commit our-commit nil 2))
+      (should (libgit2-revert-commit repo revert-commit our-commit nil 2))
       (should (string= "content-a2" (read-file "a"))))))

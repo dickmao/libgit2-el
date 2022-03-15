@@ -221,7 +221,7 @@ EGIT_DOC(commit_create, "REPO REFNAME AUTHOR COMMITTER MESSAGE TREE &optional PA
          "be updated to point to the new commit. It will be created if it\n"
          "does not exist. Use \"HEAD\" to update the HEAD of the current branch.\n"
          "AUTHOR and COMMITTER must be signature objects. MESSAGE is the commit\n"
-         "message. MESSAGE will not be cleaned up, see `libgit-message-prettify'.\n"
+         "message. MESSAGE will not be cleaned up, see `libgit2-message-prettify'.\n"
          "TREE is the root tree object associated with the new commit, and PARENTS\n"
          "is a list of parent commits.\n\n"
          "TREE and all PARENTS must be owned by REPO. If REFNAME exists, the first\n"

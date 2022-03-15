@@ -1,29 +1,29 @@
 (defun diff-to-data (diff)
   "Helper function to create a lispy data structure from a diff."
   (let (data)
-    (libgit-diff-foreach
+    (libgit2-diff-foreach
      diff
      (lambda (delta _)
        (push `(delta
-               ,(libgit-diff-delta-file-path delta)
-               ,(libgit-diff-delta-file-path delta 'new)
-               ,(libgit-diff-delta-nfiles delta)
-               ,(libgit-diff-delta-status delta))
+               ,(libgit2-diff-delta-file-path delta)
+               ,(libgit2-diff-delta-file-path delta 'new)
+               ,(libgit2-diff-delta-nfiles delta)
+               ,(libgit2-diff-delta-status delta))
              data))
      (lambda (_ _)
        (push 'binary data))
      (lambda (_ hunk)
        (push `(hunk
-               ,(libgit-diff-hunk-start hunk)
-               ,(libgit-diff-hunk-lines hunk)
-               ,(libgit-diff-hunk-start hunk 'new)
-               ,(libgit-diff-hunk-lines hunk 'new)
-               ,(libgit-diff-hunk-header hunk))
+               ,(libgit2-diff-hunk-start hunk)
+               ,(libgit2-diff-hunk-lines hunk)
+               ,(libgit2-diff-hunk-start hunk 'new)
+               ,(libgit2-diff-hunk-lines hunk 'new)
+               ,(libgit2-diff-hunk-header hunk))
              data))
      (lambda (_ _ line)
        (push `(line
-               ,(libgit-diff-line-origin line)
-               ,(libgit-diff-line-content line))
+               ,(libgit2-diff-line-origin line)
+               ,(libgit2-diff-line-content line))
              data)))
     (reverse data)))
 
@@ -32,10 +32,10 @@
     (init)
     (commit-change "file" "Line1\nLine2\nLine3\nLine4\n")
     (commit-change "file" "Line5\nLine6\nLine7\nLine8\nLine9\nLine10\n")
-    (let* ((repo (libgit-repository-open path))
-           (new-tree (libgit-revparse-single repo "HEAD^{tree}"))
-           (old-tree (libgit-revparse-single repo "HEAD~1^{tree}"))
-           (diff (libgit-diff-tree-to-tree repo old-tree new-tree))
+    (let* ((repo (libgit2-repository-open path))
+           (new-tree (libgit2-revparse-single repo "HEAD^{tree}"))
+           (old-tree (libgit2-revparse-single repo "HEAD~1^{tree}"))
+           (diff (libgit2-diff-tree-to-tree repo old-tree new-tree))
            (data (diff-to-data diff)))
       (should (equal data
                      '((delta "file" "file" 2 modified)
@@ -56,10 +56,10 @@
     (init)
     (commit-change "file" "Line1\nLine2\nLine3\nLine4")
     (commit-change "file" "Line5\nLine6\nLine7\nLine8\nLine9\nLine10")
-    (let* ((repo (libgit-repository-open path))
-           (new-tree (libgit-revparse-single repo "HEAD^{tree}"))
-           (old-tree (libgit-revparse-single repo "HEAD~1^{tree}"))
-           (diff (libgit-diff-tree-to-tree repo old-tree new-tree))
+    (let* ((repo (libgit2-repository-open path))
+           (new-tree (libgit2-revparse-single repo "HEAD^{tree}"))
+           (old-tree (libgit2-revparse-single repo "HEAD~1^{tree}"))
+           (diff (libgit2-diff-tree-to-tree repo old-tree new-tree))
            (data (diff-to-data diff)))
       (should (equal data
                      '((delta "file" "file" 2 modified)
@@ -82,10 +82,10 @@
     (init)
     (commit-change "file" "Line1\nLine2\nLine3\nLine4")
     (commit-change "file" "Line5\nLine6\nLine7\nLine8\nLine9\nLine10\n")
-    (let* ((repo (libgit-repository-open path))
-           (new-tree (libgit-revparse-single repo "HEAD^{tree}"))
-           (old-tree (libgit-revparse-single repo "HEAD~1^{tree}"))
-           (diff (libgit-diff-tree-to-tree repo old-tree new-tree))
+    (let* ((repo (libgit2-repository-open path))
+           (new-tree (libgit2-revparse-single repo "HEAD^{tree}"))
+           (old-tree (libgit2-revparse-single repo "HEAD~1^{tree}"))
+           (diff (libgit2-diff-tree-to-tree repo old-tree new-tree))
            (data (diff-to-data diff)))
       (should (equal data
                      '((delta "file" "file" 2 modified)
@@ -107,10 +107,10 @@
     (init)
     (commit-change "file" "Line1\nLine2\nLine3\nLine4\n")
     (commit-change "file" "Line5\nLine6\nLine7\nLine8\nLine9\nLine10")
-    (let* ((repo (libgit-repository-open path))
-           (new-tree (libgit-revparse-single repo "HEAD^{tree}"))
-           (old-tree (libgit-revparse-single repo "HEAD~1^{tree}"))
-           (diff (libgit-diff-tree-to-tree repo old-tree new-tree))
+    (let* ((repo (libgit2-repository-open path))
+           (new-tree (libgit2-revparse-single repo "HEAD^{tree}"))
+           (old-tree (libgit2-revparse-single repo "HEAD~1^{tree}"))
+           (diff (libgit2-diff-tree-to-tree repo old-tree new-tree))
            (data (diff-to-data diff)))
       (should (equal data
                      '((delta "file" "file" 2 modified)
@@ -132,10 +132,10 @@
     (init)
     (commit-change "file" "Line1\nLine2\nLine3\nLine4\nLine5\nLine6\nLine7\nLine8\nLine9\nLine10\n")
     (commit-change "file" "Line2\nLine3\nLine4\nLine5\nLine6\nLine7\nLine8\nLine9\n")
-    (let* ((repo (libgit-repository-open path))
-           (new-tree (libgit-revparse-single repo "HEAD^{tree}"))
-           (old-tree (libgit-revparse-single repo "HEAD~1^{tree}"))
-           (diff (libgit-diff-tree-to-tree repo old-tree new-tree))
+    (let* ((repo (libgit2-repository-open path))
+           (new-tree (libgit2-revparse-single repo "HEAD^{tree}"))
+           (old-tree (libgit2-revparse-single repo "HEAD~1^{tree}"))
+           (diff (libgit2-diff-tree-to-tree repo old-tree new-tree))
            (data (diff-to-data diff)))
       (should (equal data
                      '((delta "file" "file" 2 modified)
@@ -155,10 +155,10 @@
     (init)
     (commit-change "file" "Line1\nLine2\nLine3\nLine4\nLine5\nLine6\nLine7\nLine8\nLine9\nLine10\n")
     (commit-change "file" "Line2\nLine3\nLine4\nLine5\nLine6\nLine7\nLine8\nLine9\n")
-    (let* ((repo (libgit-repository-open path))
-           (new-tree (libgit-revparse-single repo "HEAD^{tree}"))
-           (old-tree (libgit-revparse-single repo "HEAD~1^{tree}"))
-           (diff (libgit-diff-tree-to-tree repo old-tree new-tree '((context-lines . 1))))
+    (let* ((repo (libgit2-repository-open path))
+           (new-tree (libgit2-revparse-single repo "HEAD^{tree}"))
+           (old-tree (libgit2-revparse-single repo "HEAD~1^{tree}"))
+           (diff (libgit2-diff-tree-to-tree repo old-tree new-tree '((context-lines . 1))))
            (data (diff-to-data diff)))
       (should (equal data
                      '((delta "file" "file" 2 modified)
@@ -178,35 +178,35 @@
    (add "file2")
    (commit "This should be a rename commit")
 
-   ;; First, ensure that without `libgit-diff-find-similar',
+   ;; First, ensure that without `libgit2-diff-find-similar',
    ;; similarity is not computed and we have a rename operation
    ;; represented by two distinct deltas (one is `added' and another
    ;; is `deleted').
-   (let* ((repo (libgit-repository-open path))
-          (new-tree (libgit-revparse-single repo "HEAD^{tree}"))
-          (old-tree (libgit-revparse-single repo "HEAD~1^{tree}"))
-          (diff (libgit-diff-tree-to-tree repo old-tree new-tree)))
-     (should (= 2 (libgit-diff-num-deltas diff)))
-     (should (= 1 (libgit-diff-num-deltas diff 'added)))
-     (should (= 1 (libgit-diff-num-deltas diff 'deleted))))
+   (let* ((repo (libgit2-repository-open path))
+          (new-tree (libgit2-revparse-single repo "HEAD^{tree}"))
+          (old-tree (libgit2-revparse-single repo "HEAD~1^{tree}"))
+          (diff (libgit2-diff-tree-to-tree repo old-tree new-tree)))
+     (should (= 2 (libgit2-diff-num-deltas diff)))
+     (should (= 1 (libgit2-diff-num-deltas diff 'added)))
+     (should (= 1 (libgit2-diff-num-deltas diff 'deleted))))
 
-   ;; Now run the `libgit-diff-find-similar' and ensure that we have a
+   ;; Now run the `libgit2-diff-find-similar' and ensure that we have a
    ;; single `renamed' delta.
-   (let* ((repo (libgit-repository-open path))
-          (new-tree (libgit-revparse-single repo "HEAD^{tree}"))
-          (old-tree (libgit-revparse-single repo "HEAD~1^{tree}"))
-          (diff (libgit-diff-tree-to-tree repo old-tree new-tree))
-	  (success (libgit-diff-find-similar diff)))
+   (let* ((repo (libgit2-repository-open path))
+          (new-tree (libgit2-revparse-single repo "HEAD^{tree}"))
+          (old-tree (libgit2-revparse-single repo "HEAD~1^{tree}"))
+          (diff (libgit2-diff-tree-to-tree repo old-tree new-tree))
+	  (success (libgit2-diff-find-similar diff)))
      (should success)
-     (should (= 1 (libgit-diff-num-deltas diff)))
-     (should (= 1 (libgit-diff-num-deltas diff 'renamed))))
+     (should (= 1 (libgit2-diff-num-deltas diff)))
+     (should (= 1 (libgit2-diff-num-deltas diff 'renamed))))
 
    ;; Try all options and flags
-   (let* ((repo (libgit-repository-open path))
-          (new-tree (libgit-revparse-single repo "HEAD^{tree}"))
-          (old-tree (libgit-revparse-single repo "HEAD~1^{tree}"))
-          (diff (libgit-diff-tree-to-tree repo old-tree new-tree))
-          (success (libgit-diff-find-similar
+   (let* ((repo (libgit2-repository-open path))
+          (new-tree (libgit2-revparse-single repo "HEAD^{tree}"))
+          (old-tree (libgit2-revparse-single repo "HEAD~1^{tree}"))
+          (diff (libgit2-diff-tree-to-tree repo old-tree new-tree))
+          (success (libgit2-diff-find-similar
                     diff
                     '((rename-threshold . 20)
                       (rename-from-rewrite-threshold . 30)
@@ -230,8 +230,8 @@
                                 break-rewrites-for-renames-only
                                 find-remove-unmodified))))))
      (should success)
-     (should (= 1 (libgit-diff-num-deltas diff)))
-     (should (= 1 (libgit-diff-num-deltas diff 'renamed))))
+     (should (= 1 (libgit2-diff-num-deltas diff)))
+     (should (= 1 (libgit2-diff-num-deltas diff 'renamed))))
 
    ;; Verify that at least some flags work.
    ;; Make an inexact copy
@@ -242,29 +242,29 @@
    (add "file4")
    (commit "This should be an inexact rename commit")
 
-   ;; `libgit-diff-find-similar' should not detect a rename if
+   ;; `libgit2-diff-find-similar' should not detect a rename if
    ;; `find-dont-ignore-whitespace' flag is set.
-   (let* ((repo (libgit-repository-open path))
-          (new-tree (libgit-revparse-single repo "HEAD^{tree}"))
-          (old-tree (libgit-revparse-single repo "HEAD~1^{tree}"))
-          (diff (libgit-diff-tree-to-tree repo old-tree new-tree))
-          (success (libgit-diff-find-similar
+   (let* ((repo (libgit2-repository-open path))
+          (new-tree (libgit2-revparse-single repo "HEAD^{tree}"))
+          (old-tree (libgit2-revparse-single repo "HEAD~1^{tree}"))
+          (diff (libgit2-diff-tree-to-tree repo old-tree new-tree))
+          (success (libgit2-diff-find-similar
                     diff
                     '((flags . (find-renames find-dont-ignore-whitespace))))))
      (should success)
-     (should (= 2 (libgit-diff-num-deltas diff)))
-     (should (= 0 (libgit-diff-num-deltas diff 'renamed))))
+     (should (= 2 (libgit2-diff-num-deltas diff)))
+     (should (= 0 (libgit2-diff-num-deltas diff 'renamed))))
 
    ;; Now pass an `find-ignore-leading-whitespace' option to detect
    ;; such rename.
-   (let* ((repo (libgit-repository-open path))
-          (new-tree (libgit-revparse-single repo "HEAD^{tree}"))
-          (old-tree (libgit-revparse-single repo "HEAD~1^{tree}"))
-          (diff (libgit-diff-tree-to-tree repo old-tree new-tree))
-          (success (libgit-diff-find-similar
+   (let* ((repo (libgit2-repository-open path))
+          (new-tree (libgit2-revparse-single repo "HEAD^{tree}"))
+          (old-tree (libgit2-revparse-single repo "HEAD~1^{tree}"))
+          (diff (libgit2-diff-tree-to-tree repo old-tree new-tree))
+          (success (libgit2-diff-find-similar
                     diff
                     '((flags . (find-renames
                                 find-ignore-leading-whitespace))))))
      (should success)
-     (should (= 1 (libgit-diff-num-deltas diff)))
-     (should (= 1 (libgit-diff-num-deltas diff 'renamed))))))
+     (should (= 1 (libgit2-diff-num-deltas diff)))
+     (should (= 1 (libgit2-diff-num-deltas diff 'renamed))))))

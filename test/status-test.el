@@ -1,9 +1,9 @@
 (defun foreach-collect (repo &optional show flags pathspec baseline)
   (let (res)
-    (libgit-status-foreach-ext
+    (libgit2-status-foreach-ext
      repo
      (lambda (path status)
-       (push (cons path (sort (libgit-status-decode status)
+       (push (cons path (sort (libgit2-status-decode status)
                               (lambda (a b) (string< (symbol-name a)
                                                      (symbol-name b)))))
              res))
@@ -13,47 +13,47 @@
 (ert-deftest status-file ()
   (with-temp-dir path
     (init)
-    (let ((repo (libgit-repository-open path)))
-      (should-error (libgit-status-file repo "a") :type 'giterr-invalid)
+    (let ((repo (libgit2-repository-open path)))
+      (should-error (libgit2-status-file repo "a") :type 'giterr-invalid)
 
       (write "a" "a")
-      (should (equal '(wt-new) (libgit-status-file repo "a")))
+      (should (equal '(wt-new) (libgit2-status-file repo "a")))
 
       (run "git" "add" "a")
-      (should (equal '(index-new) (libgit-status-file repo "a")))
+      (should (equal '(index-new) (libgit2-status-file repo "a")))
 
       (write "a" "b")
-      (should (equal '(index-new wt-modified) (libgit-status-file repo "a")))
+      (should (equal '(index-new wt-modified) (libgit2-status-file repo "a")))
 
       (commit)
-      (should (equal '(wt-modified) (libgit-status-file repo "a")))
+      (should (equal '(wt-modified) (libgit2-status-file repo "a")))
 
       (run "git" "checkout" "--" "a")
-      (should (equal nil (libgit-status-file repo "a")))
+      (should (equal nil (libgit2-status-file repo "a")))
 
       (delete-file "a")
-      (should (equal '(wt-deleted) (libgit-status-file repo "a")))
+      (should (equal '(wt-deleted) (libgit2-status-file repo "a")))
 
       (run "git" "add" "a")
-      (should (equal '(index-deleted) (libgit-status-file repo "a")))
+      (should (equal '(index-deleted) (libgit2-status-file repo "a")))
 
       (write "b" "x")
       (write ".gitignore" "b")
-      (should (equal '(ignored) (libgit-status-file repo "b")))
+      (should (equal '(ignored) (libgit2-status-file repo "b")))
 
       (unless (memq system-type '(windows-nt ms-dos))
         (run "git" "reset" "HEAD" "a")
         (run "git" "checkout" "--" "a")
         (make-symbolic-link "b" "a" t)
-        (should (equal '(wt-typechange) (libgit-status-file repo "a")))
+        (should (equal '(wt-typechange) (libgit2-status-file repo "a")))
 
         (run "git" "add" "a")
-        (should (equal '(index-typechange) (libgit-status-file repo "a")))))))
+        (should (equal '(index-typechange) (libgit2-status-file repo "a")))))))
 
 (ert-deftest status-foreach ()
   (with-temp-dir path
     (init)
-    (let ((repo (libgit-repository-open path)))
+    (let ((repo (libgit2-repository-open path)))
 
       (should (equal (foreach-collect repo) nil))
       (write "a" "a")
@@ -112,11 +112,11 @@
                 '("d/f*" "d/*z"))
                '(("d/baz" . (wt-new)) ("d/foo" . (wt-new)))))
 
-      (should-error (libgit-status-foreach-ext repo nil) :type 'wrong-type-argument)
+      (should-error (libgit2-status-foreach-ext repo nil) :type 'wrong-type-argument)
       (let ((i 0))
         (define-error 'foo "Foo")
         ;; Nonlocal exit test
-        (should-error (libgit-status-foreach-ext
+        (should-error (libgit2-status-foreach-ext
                        repo
                        (lambda (&rest args)
                          (when (= (cl-incf i) 2)
@@ -125,31 +125,31 @@
 		       '(include-untracked include-ignored include-unmodified))
 		       :type 'foo)
         (should (= i 2)))
-      (should-error (libgit-status-foreach-ext repo #'ignore 'foo)
+      (should-error (libgit2-status-foreach-ext repo #'ignore 'foo)
                     :type 'wrong-value-argument)
-      (should-error (libgit-status-foreach-ext repo #'ignore nil 1)
+      (should-error (libgit2-status-foreach-ext repo #'ignore nil 1)
                     :type 'wrong-type-argument)
-      (should-error (libgit-status-foreach-ext repo #'ignore nil '(foo))
+      (should-error (libgit2-status-foreach-ext repo #'ignore nil '(foo))
                     :type 'wrong-value-argument)
-      (should-error (libgit-status-foreach-ext repo #'ignore nil nil 1)
+      (should-error (libgit2-status-foreach-ext repo #'ignore nil nil 1)
                     :type 'wrong-type-argument)
-      (should-error (libgit-status-foreach-ext repo #'ignore nil nil '(foo))
+      (should-error (libgit2-status-foreach-ext repo #'ignore nil nil '(foo))
                     :type 'wrong-type-argument)
-      (should-error (libgit-status-foreach-ext repo #'ignore nil nil nil 1)
+      (should-error (libgit2-status-foreach-ext repo #'ignore nil nil nil 1)
                     :type 'wrong-type-argument)
-      (should-error (libgit-status-foreach-ext repo #'ignore nil
+      (should-error (libgit2-status-foreach-ext repo #'ignore nil
                                            '(no-refresh update-index))
                     :type 'giterr-invalid)
 
       ;; Should not error
-      (libgit-status-foreach-ext
+      (libgit2-status-foreach-ext
        repo #'ignore nil nil nil
-       (libgit-reference-peel (libgit-repository-head repo) 'tree)))))
+       (libgit2-reference-peel (libgit2-repository-head repo) 'tree)))))
 
 (ert-deftest status-should-ignore-p ()
   (with-temp-dir path
     (init)
     (write ".gitignore" "/foo/baz")
-    (let ((repo (libgit-repository-open path)))
-      (should (libgit-status-should-ignore-p repo "foo/baz"))
-      (should (not (libgit-status-should-ignore-p repo "bar"))))))
+    (let ((repo (libgit2-repository-open path)))
+      (should (libgit2-status-should-ignore-p repo "foo/baz"))
+      (should (not (libgit2-status-should-ignore-p repo "bar"))))))

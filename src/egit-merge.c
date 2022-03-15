@@ -10,7 +10,7 @@
 
 EGIT_DOC(merge, "REPO HEADS &optional MERGE-OPTIONS CHECKOUT-OPTIONS",
          "Merge HEADS (a list of annotated commits) into the HEAD of REPO.\n"
-         "For CHECKOUT-OPTIONS, see `libgit-checkout-head'.\n"
+         "For CHECKOUT-OPTIONS, see `libgit2-checkout-head'.\n"
          "MERGE-OPTIONS is an alist with the following keys:\n"
          "- `find-renames': if non-nil, detect renames, enabling the ability\n"
          "     to merge between modified and renamed files\n"

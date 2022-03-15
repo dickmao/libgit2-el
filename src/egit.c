@@ -365,501 +365,501 @@ void egit_init(emacs_env *env)
 {
     // Debug mode functions
 #ifdef EGIT_DEBUG
-    DEFUN("libgit--allocs", _allocs, 0, 0);
-    DEFUN("libgit--finalizes", _finalizes, 0, 0);
-    DEFUN("libgit--frees", _frees, 0, 0);
-    DEFUN("libgit--refcount", _refcount, 1, 1);
-    DEFUN("libgit--wrapper", _wrapper, 1, 1);
-    DEFUN("libgit--wrapped", _wrapped, 1, 1);
-    DEFUN("libgit--parent-wrapper", _parent_wrapper, 1, 1);
+    DEFUN("libgit2--allocs", _allocs, 0, 0);
+    DEFUN("libgit2--finalizes", _finalizes, 0, 0);
+    DEFUN("libgit2--frees", _frees, 0, 0);
+    DEFUN("libgit2--refcount", _refcount, 1, 1);
+    DEFUN("libgit2--wrapper", _wrapper, 1, 1);
+    DEFUN("libgit2--wrapped", _wrapped, 1, 1);
+    DEFUN("libgit2--parent-wrapper", _parent_wrapper, 1, 1);
 #endif
 
     // Type checkers
-    DEFUN("libgit-typeof", typeof, 1, 1);
-    DEFUN("libgit-annotated-commit-p", annotated_commit_p, 1, 1);
-    DEFUN("libgit-blame-p", blame_p, 1, 1);
-    DEFUN("libgit-blame-hunk-p", blame_hunk_p, 1, 1);
-    DEFUN("libgit-blob-p", blob_p, 1, 1);
-    DEFUN("libgit-commit-p", commit_p, 1, 1);
-    DEFUN("libgit-config-p", config_p, 1, 1);
-    DEFUN("libgit-cred-p", cred_p, 1, 1);
-    DEFUN("libgit-diff-p", diff_p, 1, 1);
-    DEFUN("libgit-diff-delta-p", diff_delta_p, 1, 1);
-    DEFUN("libgit-diff-binary-p", diff_binary_p, 1, 1);
-    DEFUN("libgit-diff-hunk-p", diff_hunk_p, 1, 1);
-    DEFUN("libgit-diff-line-p", diff_line_p, 1, 1);
-    DEFUN("libgit-index-p", index_p, 1, 1);
-    DEFUN("libgit-index-entry-p", index_entry_p, 1, 1);
-    DEFUN("libgit-object-p", object_p, 1, 1);
-    DEFUN("libgit-pathspec-p", pathspec_p, 1, 1);
-    DEFUN("libgit-pathspec-match-list-p", pathspec_match_list_p, 1, 1);
-    DEFUN("libgit-reference-p", reference_p, 1, 1);
-    DEFUN("libgit-reflog-p", reflog_p, 1, 1);
-    DEFUN("libgit-reflog-entry-p", reflog_entry_p, 1, 1);
-    DEFUN("libgit-refspec-p", refspec_p, 1, 1);
-    DEFUN("libgit-remote-p", remote_p, 1, 1);
-    DEFUN("libgit-repository-p", repository_p, 1, 1);
-    DEFUN("libgit-revwalk-p", revwalk_p, 1, 1);
-    DEFUN("libgit-signature-p", signature_p, 1, 1);
-    DEFUN("libgit-submodule-p", submodule_p, 1, 1);
-    DEFUN("libgit-tag-p", tag_p, 1, 1);
-    DEFUN("libgit-transaction-p", transaction_p, 1, 1);
-    DEFUN("libgit-tree-p", tree_p, 1, 1);
-    DEFUN("libgit-treebuilder-p", treebuilder_p, 1, 1);
+    DEFUN("libgit2-typeof", typeof, 1, 1);
+    DEFUN("libgit2-annotated-commit-p", annotated_commit_p, 1, 1);
+    DEFUN("libgit2-blame-p", blame_p, 1, 1);
+    DEFUN("libgit2-blame-hunk-p", blame_hunk_p, 1, 1);
+    DEFUN("libgit2-blob-p", blob_p, 1, 1);
+    DEFUN("libgit2-commit-p", commit_p, 1, 1);
+    DEFUN("libgit2-config-p", config_p, 1, 1);
+    DEFUN("libgit2-cred-p", cred_p, 1, 1);
+    DEFUN("libgit2-diff-p", diff_p, 1, 1);
+    DEFUN("libgit2-diff-delta-p", diff_delta_p, 1, 1);
+    DEFUN("libgit2-diff-binary-p", diff_binary_p, 1, 1);
+    DEFUN("libgit2-diff-hunk-p", diff_hunk_p, 1, 1);
+    DEFUN("libgit2-diff-line-p", diff_line_p, 1, 1);
+    DEFUN("libgit2-index-p", index_p, 1, 1);
+    DEFUN("libgit2-index-entry-p", index_entry_p, 1, 1);
+    DEFUN("libgit2-object-p", object_p, 1, 1);
+    DEFUN("libgit2-pathspec-p", pathspec_p, 1, 1);
+    DEFUN("libgit2-pathspec-match-list-p", pathspec_match_list_p, 1, 1);
+    DEFUN("libgit2-reference-p", reference_p, 1, 1);
+    DEFUN("libgit2-reflog-p", reflog_p, 1, 1);
+    DEFUN("libgit2-reflog-entry-p", reflog_entry_p, 1, 1);
+    DEFUN("libgit2-refspec-p", refspec_p, 1, 1);
+    DEFUN("libgit2-remote-p", remote_p, 1, 1);
+    DEFUN("libgit2-repository-p", repository_p, 1, 1);
+    DEFUN("libgit2-revwalk-p", revwalk_p, 1, 1);
+    DEFUN("libgit2-signature-p", signature_p, 1, 1);
+    DEFUN("libgit2-submodule-p", submodule_p, 1, 1);
+    DEFUN("libgit2-tag-p", tag_p, 1, 1);
+    DEFUN("libgit2-transaction-p", transaction_p, 1, 1);
+    DEFUN("libgit2-tree-p", tree_p, 1, 1);
+    DEFUN("libgit2-treebuilder-p", treebuilder_p, 1, 1);
 
     // Libgit2 (not namespaced as others!)
-    DEFUN("libgit-feature-p", libgit2_feature_p, 1, 1);
-    DEFUN("libgit-version", libgit2_version, 0, 0);
+    DEFUN("libgit2-feature-p", libgit2_feature_p, 1, 1);
+    DEFUN("libgit2-version", libgit2_version, 0, 0);
 
     // Annotated commit
-    DEFUN("libgit-annotated-commit-from-ref", annotated_commit_from_ref, 2, 2);
-    DEFUN("libgit-annotated-commit-from-fetchhead", annotated_commit_from_fetchhead, 4, 4);
-    DEFUN("libgit-annotated-commit-from-revspec", annotated_commit_from_revspec, 2, 2);
-    DEFUN("libgit-annotated-commit-lookup", annotated_commit_lookup, 2, 2);
-    DEFUN("libgit-annotated-commit-id", annotated_commit_id, 1, 1);
+    DEFUN("libgit2-annotated-commit-from-ref", annotated_commit_from_ref, 2, 2);
+    DEFUN("libgit2-annotated-commit-from-fetchhead", annotated_commit_from_fetchhead, 4, 4);
+    DEFUN("libgit2-annotated-commit-from-revspec", annotated_commit_from_revspec, 2, 2);
+    DEFUN("libgit2-annotated-commit-lookup", annotated_commit_lookup, 2, 2);
+    DEFUN("libgit2-annotated-commit-id", annotated_commit_id, 1, 1);
 
     // Blame
-    DEFUN("libgit-blame-file", blame_file, 2, 3);
-    DEFUN("libgit-blame-get-hunk-byindex", blame_get_hunk_byindex, 2, 2);
-    DEFUN("libgit-blame-get-hunk-byline", blame_get_hunk_byline, 2, 2);
-    DEFUN("libgit-blame-get-hunk-count", blame_get_hunk_count, 1, 1);
+    DEFUN("libgit2-blame-file", blame_file, 2, 3);
+    DEFUN("libgit2-blame-get-hunk-byindex", blame_get_hunk_byindex, 2, 2);
+    DEFUN("libgit2-blame-get-hunk-byline", blame_get_hunk_byline, 2, 2);
+    DEFUN("libgit2-blame-get-hunk-count", blame_get_hunk_count, 1, 1);
 
-    DEFUN("libgit-blame-hunk-commit-id", blame_hunk_commit_id, 1, 2);
-    DEFUN("libgit-blame-hunk-lines", blame_hunk_lines, 1, 1);
-    DEFUN("libgit-blame-hunk-orig-path", blame_hunk_orig_path, 1, 1);
-    DEFUN("libgit-blame-hunk-signature", blame_hunk_signature, 1, 2);
-    DEFUN("libgit-blame-hunk-start-line-number", blame_hunk_start_line_number, 1, 2);
+    DEFUN("libgit2-blame-hunk-commit-id", blame_hunk_commit_id, 1, 2);
+    DEFUN("libgit2-blame-hunk-lines", blame_hunk_lines, 1, 1);
+    DEFUN("libgit2-blame-hunk-orig-path", blame_hunk_orig_path, 1, 1);
+    DEFUN("libgit2-blame-hunk-signature", blame_hunk_signature, 1, 2);
+    DEFUN("libgit2-blame-hunk-start-line-number", blame_hunk_start_line_number, 1, 2);
 
     // Blob
-    DEFUN("libgit-blob-create-fromdisk", blob_create_fromdisk, 2, 2);
-    DEFUN("libgit-blob-create-fromstring", blob_create_fromstring, 2, 2);
-    DEFUN("libgit-blob-create-fromworkdir", blob_create_fromworkdir, 2, 2);
-    DEFUN("libgit-blob-lookup", blob_lookup, 2, 2);
-    DEFUN("libgit-blob-lookup-prefix", blob_lookup_prefix, 2, 2);
+    DEFUN("libgit2-blob-create-fromdisk", blob_create_fromdisk, 2, 2);
+    DEFUN("libgit2-blob-create-fromstring", blob_create_fromstring, 2, 2);
+    DEFUN("libgit2-blob-create-fromworkdir", blob_create_fromworkdir, 2, 2);
+    DEFUN("libgit2-blob-lookup", blob_lookup, 2, 2);
+    DEFUN("libgit2-blob-lookup-prefix", blob_lookup_prefix, 2, 2);
 
-    DEFUN("libgit-blob-binary-p", blob_binary_p, 1, 1);
-    DEFUN("libgit-blob-filtered-content", blob_filtered_content, 2, 3);
-    DEFUN("libgit-blob-id", blob_id, 1, 1);
-    DEFUN("libgit-blob-owner", blob_owner, 1, 1);
-    DEFUN("libgit-blob-rawcontent", blob_rawcontent, 1, 1);
-    DEFUN("libgit-blob-rawsize", blob_rawsize, 1, 1);
+    DEFUN("libgit2-blob-binary-p", blob_binary_p, 1, 1);
+    DEFUN("libgit2-blob-filtered-content", blob_filtered_content, 2, 3);
+    DEFUN("libgit2-blob-id", blob_id, 1, 1);
+    DEFUN("libgit2-blob-owner", blob_owner, 1, 1);
+    DEFUN("libgit2-blob-rawcontent", blob_rawcontent, 1, 1);
+    DEFUN("libgit2-blob-rawsize", blob_rawsize, 1, 1);
 
     // Branch
-    DEFUN("libgit-branch-create", branch_create, 3, 4);
-    DEFUN("libgit-branch-create-from-annotated", branch_create_from_annotated, 3, 4);
-    DEFUN("libgit-branch-lookup", branch_lookup, 2, 3);
-    DEFUN("libgit-branch-delete", branch_delete, 1, 1);
-    DEFUN("libgit-branch-checked-out-p", branch_checked_out_p, 1, 1);
-    DEFUN("libgit-branch-foreach", branch_foreach, 3, 3);
-    DEFUN("libgit-branch-head-p", branch_head_p, 1, 1);
-    DEFUN("libgit-branch-move", branch_move, 2, 3);
-    DEFUN("libgit-branch-name", branch_name, 1, 1);
-    DEFUN("libgit-branch-remote-name", branch_remote_name, 2, 2);
-    DEFUN("libgit-branch-set-upstream", branch_set_upstream, 2, 2);
-    DEFUN("libgit-branch-upstream", branch_upstream, 1, 1);
-    DEFUN("libgit-branch-upstream-name", branch_upstream_name, 2, 2);
-    DEFUN("libgit-branch-upstream-remote", branch_upstream_remote, 2, 2);
+    DEFUN("libgit2-branch-create", branch_create, 3, 4);
+    DEFUN("libgit2-branch-create-from-annotated", branch_create_from_annotated, 3, 4);
+    DEFUN("libgit2-branch-lookup", branch_lookup, 2, 3);
+    DEFUN("libgit2-branch-delete", branch_delete, 1, 1);
+    DEFUN("libgit2-branch-checked-out-p", branch_checked_out_p, 1, 1);
+    DEFUN("libgit2-branch-foreach", branch_foreach, 3, 3);
+    DEFUN("libgit2-branch-head-p", branch_head_p, 1, 1);
+    DEFUN("libgit2-branch-move", branch_move, 2, 3);
+    DEFUN("libgit2-branch-name", branch_name, 1, 1);
+    DEFUN("libgit2-branch-remote-name", branch_remote_name, 2, 2);
+    DEFUN("libgit2-branch-set-upstream", branch_set_upstream, 2, 2);
+    DEFUN("libgit2-branch-upstream", branch_upstream, 1, 1);
+    DEFUN("libgit2-branch-upstream-name", branch_upstream_name, 2, 2);
+    DEFUN("libgit2-branch-upstream-remote", branch_upstream_remote, 2, 2);
 
     // Checkout
-    DEFUN("libgit-checkout-head", checkout_head, 1, 2);
-    DEFUN("libgit-checkout-index", checkout_index, 1, 3);
-    DEFUN("libgit-checkout-tree", checkout_tree, 1, 3);
+    DEFUN("libgit2-checkout-head", checkout_head, 1, 2);
+    DEFUN("libgit2-checkout-index", checkout_index, 1, 3);
+    DEFUN("libgit2-checkout-tree", checkout_tree, 1, 3);
 
     // Cherrypick
-    DEFUN("libgit-cherrypick", cherrypick, 2, 5);
-    DEFUN("libgit-cherrypick-commit", cherrypick_commit, 3, 5);
+    DEFUN("libgit2-cherrypick", cherrypick, 2, 5);
+    DEFUN("libgit2-cherrypick-commit", cherrypick_commit, 3, 5);
 
     // Clone
-    DEFUN("libgit-clone", clone, 2, 2);
+    DEFUN("libgit2-clone", clone, 2, 2);
 
     // Commit
-    DEFUN("libgit-commit-lookup", commit_lookup, 2, 2);
-    DEFUN("libgit-commit-lookup-prefix", commit_lookup_prefix, 2, 2);
+    DEFUN("libgit2-commit-lookup", commit_lookup, 2, 2);
+    DEFUN("libgit2-commit-lookup-prefix", commit_lookup_prefix, 2, 2);
 
-    DEFUN("libgit-commit-author", commit_author, 1, 1);
-    DEFUN("libgit-commit-body", commit_body, 1, 1);
-    DEFUN("libgit-commit-committer", commit_committer, 1, 1);
-    DEFUN("libgit-commit-id", commit_id, 1, 1);
-    DEFUN("libgit-commit-message", commit_message, 1, 1);
-    DEFUN("libgit-commit-nth-gen-ancestor", commit_nth_gen_ancestor, 2, 2);
-    DEFUN("libgit-commit-owner", commit_owner, 1, 1);
-    DEFUN("libgit-commit-parent", commit_parent, 1, 2);
-    DEFUN("libgit-commit-parent-id", commit_parent_id, 1, 2);
-    DEFUN("libgit-commit-parentcount", commit_parentcount, 1, 1);
-    DEFUN("libgit-commit-summary", commit_summary, 1, 1);
-    DEFUN("libgit-commit-time", commit_time, 1, 1);
-    DEFUN("libgit-commit-tree", commit_tree, 1, 1);
-    DEFUN("libgit-commit-tree-id", commit_tree_id, 1, 1);
+    DEFUN("libgit2-commit-author", commit_author, 1, 1);
+    DEFUN("libgit2-commit-body", commit_body, 1, 1);
+    DEFUN("libgit2-commit-committer", commit_committer, 1, 1);
+    DEFUN("libgit2-commit-id", commit_id, 1, 1);
+    DEFUN("libgit2-commit-message", commit_message, 1, 1);
+    DEFUN("libgit2-commit-nth-gen-ancestor", commit_nth_gen_ancestor, 2, 2);
+    DEFUN("libgit2-commit-owner", commit_owner, 1, 1);
+    DEFUN("libgit2-commit-parent", commit_parent, 1, 2);
+    DEFUN("libgit2-commit-parent-id", commit_parent_id, 1, 2);
+    DEFUN("libgit2-commit-parentcount", commit_parentcount, 1, 1);
+    DEFUN("libgit2-commit-summary", commit_summary, 1, 1);
+    DEFUN("libgit2-commit-time", commit_time, 1, 1);
+    DEFUN("libgit2-commit-tree", commit_tree, 1, 1);
+    DEFUN("libgit2-commit-tree-id", commit_tree_id, 1, 1);
 
-    DEFUN("libgit-commit-create", commit_create, 6, 7);
+    DEFUN("libgit2-commit-create", commit_create, 6, 7);
 
     // Config
-    DEFUN("libgit-config-new", config_new, 0, 0);
-    DEFUN("libgit-config-open-default", config_open_default, 0, 0);
-    DEFUN("libgit-config-open-global", config_open_global, 1, 1);
-    DEFUN("libgit-config-open-level", config_open_level, 1, 2);
-    DEFUN("libgit-config-open-ondisk", config_open_ondisk, 1, 1);
-    DEFUN("libgit-config-snapshot", config_snapshot, 1, 1);
+    DEFUN("libgit2-config-new", config_new, 0, 0);
+    DEFUN("libgit2-config-open-default", config_open_default, 0, 0);
+    DEFUN("libgit2-config-open-global", config_open_global, 1, 1);
+    DEFUN("libgit2-config-open-level", config_open_level, 1, 2);
+    DEFUN("libgit2-config-open-ondisk", config_open_ondisk, 1, 1);
+    DEFUN("libgit2-config-snapshot", config_snapshot, 1, 1);
 
-    DEFUN("libgit-config-get-bool", config_get_bool, 2, 2);
-    DEFUN("libgit-config-get-int", config_get_int, 2, 2);
-    DEFUN("libgit-config-get-path", config_get_path, 2, 2);
-    DEFUN("libgit-config-get-string", config_get_string, 2, 2);
-    DEFUN("libgit-config-lock", config_lock, 1, 1);
+    DEFUN("libgit2-config-get-bool", config_get_bool, 2, 2);
+    DEFUN("libgit2-config-get-int", config_get_int, 2, 2);
+    DEFUN("libgit2-config-get-path", config_get_path, 2, 2);
+    DEFUN("libgit2-config-get-string", config_get_string, 2, 2);
+    DEFUN("libgit2-config-lock", config_lock, 1, 1);
 
-    DEFUN("libgit-config-set-bool", config_set_bool, 3, 3);
-    DEFUN("libgit-config-set-int", config_set_int, 3, 3);
-    DEFUN("libgit-config-set-string", config_set_string, 3, 3);
+    DEFUN("libgit2-config-set-bool", config_set_bool, 3, 3);
+    DEFUN("libgit2-config-set-int", config_set_int, 3, 3);
+    DEFUN("libgit2-config-set-string", config_set_string, 3, 3);
 
-    DEFUN("libgit-config-add-file-ondisk", config_add_file_ondisk, 2, 5);
-    DEFUN("libgit-config-delete-entry", config_delete_entry, 2, 2);
-    DEFUN("libgit-config-delete-multivar", config_delete_multivar, 3, 3);
+    DEFUN("libgit2-config-add-file-ondisk", config_add_file_ondisk, 2, 5);
+    DEFUN("libgit2-config-delete-entry", config_delete_entry, 2, 2);
+    DEFUN("libgit2-config-delete-multivar", config_delete_multivar, 3, 3);
 
-    DEFUN("libgit-config-find-global", config_find_global, 0, 0);
-    DEFUN("libgit-config-find-programdata", config_find_programdata, 0, 0);
-    DEFUN("libgit-config-find-system", config_find_system, 0, 0);
-    DEFUN("libgit-config-find-xdg", config_find_xdg, 0, 0);
+    DEFUN("libgit2-config-find-global", config_find_global, 0, 0);
+    DEFUN("libgit2-config-find-programdata", config_find_programdata, 0, 0);
+    DEFUN("libgit2-config-find-system", config_find_system, 0, 0);
+    DEFUN("libgit2-config-find-xdg", config_find_xdg, 0, 0);
 
     // Cred
-    DEFUN("libgit-cred-default-new", cred_default_new, 0, 0);
-    DEFUN("libgit-cred-ssh-key-from-agent", cred_ssh_key_from_agent, 1, 1);
-    DEFUN("libgit-cred-ssh-key-memory-new", cred_ssh_key_memory_new, 4, 4);
-    DEFUN("libgit-cred-ssh-key-new", cred_ssh_key_new, 4, 4);
-    DEFUN("libgit-cred-username-new", cred_username_new, 1, 1);
-    DEFUN("libgit-cred-userpass-plaintext-new", cred_userpass_plaintext_new, 2, 2);
-    DEFUN("libgit-cred-username-p", cred_username_p, 1, 1);
+    DEFUN("libgit2-cred-default-new", cred_default_new, 0, 0);
+    DEFUN("libgit2-cred-ssh-key-from-agent", cred_ssh_key_from_agent, 1, 1);
+    DEFUN("libgit2-cred-ssh-key-memory-new", cred_ssh_key_memory_new, 4, 4);
+    DEFUN("libgit2-cred-ssh-key-new", cred_ssh_key_new, 4, 4);
+    DEFUN("libgit2-cred-username-new", cred_username_new, 1, 1);
+    DEFUN("libgit2-cred-userpass-plaintext-new", cred_userpass_plaintext_new, 2, 2);
+    DEFUN("libgit2-cred-username-p", cred_username_p, 1, 1);
 
     // Describe
-    DEFUN("libgit-describe-commit", describe_commit, 1, 2);
-    DEFUN("libgit-describe-workdir", describe_workdir, 1, 2);
+    DEFUN("libgit2-describe-commit", describe_commit, 1, 2);
+    DEFUN("libgit2-describe-workdir", describe_workdir, 1, 2);
 
     // Diff
-    DEFUN("libgit-diff-index-to-index", diff_index_to_index, 3, 4);
-    DEFUN("libgit-diff-index-to-workdir", diff_index_to_workdir, 1, 3);
-    DEFUN("libgit-diff-tree-to-index", diff_tree_to_index, 1, 4);
-    DEFUN("libgit-diff-tree-to-tree", diff_tree_to_tree, 1, 4);
-    DEFUN("libgit-diff-tree-to-workdir", diff_tree_to_workdir, 1, 3);
-    DEFUN("libgit-diff-tree-to-workdir-with-index", diff_tree_to_workdir_with_index, 1, 3);
-    DEFUN("libgit-diff-find-similar", diff_find_similar, 1, 2);
+    DEFUN("libgit2-diff-index-to-index", diff_index_to_index, 3, 4);
+    DEFUN("libgit2-diff-index-to-workdir", diff_index_to_workdir, 1, 3);
+    DEFUN("libgit2-diff-tree-to-index", diff_tree_to_index, 1, 4);
+    DEFUN("libgit2-diff-tree-to-tree", diff_tree_to_tree, 1, 4);
+    DEFUN("libgit2-diff-tree-to-workdir", diff_tree_to_workdir, 1, 3);
+    DEFUN("libgit2-diff-tree-to-workdir-with-index", diff_tree_to_workdir_with_index, 1, 3);
+    DEFUN("libgit2-diff-find-similar", diff_find_similar, 1, 2);
 
-    DEFUN("libgit-diff-foreach", diff_foreach, 2, 5);
-    DEFUN("libgit-diff-print", diff_print, 1, 3);
+    DEFUN("libgit2-diff-foreach", diff_foreach, 2, 5);
+    DEFUN("libgit2-diff-print", diff_print, 1, 3);
 
-    DEFUN("libgit-diff-delta-file-id", diff_delta_file_id, 1, 2);
-    DEFUN("libgit-diff-delta-file-path", diff_delta_file_path, 1, 2);
-    DEFUN("libgit-diff-delta-nfiles", diff_delta_nfiles, 1, 1);
-    DEFUN("libgit-diff-delta-similarity", diff_delta_similarity, 1, 1);
-    DEFUN("libgit-diff-delta-status", diff_delta_status, 1, 1);
-    DEFUN("libgit-diff-delta-file-exists-p", diff_delta_file_exists_p, 1, 2);
+    DEFUN("libgit2-diff-delta-file-id", diff_delta_file_id, 1, 2);
+    DEFUN("libgit2-diff-delta-file-path", diff_delta_file_path, 1, 2);
+    DEFUN("libgit2-diff-delta-nfiles", diff_delta_nfiles, 1, 1);
+    DEFUN("libgit2-diff-delta-similarity", diff_delta_similarity, 1, 1);
+    DEFUN("libgit2-diff-delta-status", diff_delta_status, 1, 1);
+    DEFUN("libgit2-diff-delta-file-exists-p", diff_delta_file_exists_p, 1, 2);
 
-    DEFUN("libgit-diff-hunk-header", diff_hunk_header, 1, 1);
-    DEFUN("libgit-diff-hunk-lines", diff_hunk_lines, 1, 2);
-    DEFUN("libgit-diff-hunk-start", diff_hunk_start, 1, 2);
+    DEFUN("libgit2-diff-hunk-header", diff_hunk_header, 1, 1);
+    DEFUN("libgit2-diff-hunk-lines", diff_hunk_lines, 1, 2);
+    DEFUN("libgit2-diff-hunk-start", diff_hunk_start, 1, 2);
 
-    DEFUN("libgit-diff-line-origin", diff_line_origin, 1, 1);
-    DEFUN("libgit-diff-line-lineno", diff_line_lineno, 2, 2);
-    DEFUN("libgit-diff-line-content", diff_line_content, 1, 1);
+    DEFUN("libgit2-diff-line-origin", diff_line_origin, 1, 1);
+    DEFUN("libgit2-diff-line-lineno", diff_line_lineno, 2, 2);
+    DEFUN("libgit2-diff-line-content", diff_line_content, 1, 1);
 
-    DEFUN("libgit-diff-get-delta", diff_get_delta, 2, 2);
-    DEFUN("libgit-diff-num-deltas", diff_num_deltas, 1, 2);
+    DEFUN("libgit2-diff-get-delta", diff_get_delta, 2, 2);
+    DEFUN("libgit2-diff-num-deltas", diff_num_deltas, 1, 2);
 
     // Graph
-    DEFUN("libgit-graph-ahead-behind", graph_ahead_behind, 3, 3);
-    DEFUN("libgit-graph-descendant-p", graph_descendant_p, 3, 3);
+    DEFUN("libgit2-graph-ahead-behind", graph_ahead_behind, 3, 3);
+    DEFUN("libgit2-graph-descendant-p", graph_descendant_p, 3, 3);
 
     // Ignore
-    DEFUN("libgit-ignore-add-rule", add_rule, 2, 2);
-    DEFUN("libgit-ignore-clear-internal-rules", clear_internal_rules, 1, 1);
-    DEFUN("libgit-ignore-path-ignored-p", path_ignored_p, 2, 2);
+    DEFUN("libgit2-ignore-add-rule", add_rule, 2, 2);
+    DEFUN("libgit2-ignore-clear-internal-rules", clear_internal_rules, 1, 1);
+    DEFUN("libgit2-ignore-path-ignored-p", path_ignored_p, 2, 2);
 
     // Index
-    DEFUN("libgit-index-caps", index_caps, 1, 1);
-    DEFUN("libgit-index-checksum", index_checksum, 1, 1);
-    DEFUN("libgit-index-conflict-foreach", index_conflict_foreach, 2, 2);
-    DEFUN("libgit-index-conflict-get", index_conflict_get, 2, 2);
-    DEFUN("libgit-index-entry-id", index_entry_id, 1, 1);
-    DEFUN("libgit-index-entry-path", index_entry_path, 1, 1);
-    DEFUN("libgit-index-entry-stage", index_entry_stage, 1, 1);
-    DEFUN("libgit-index-entrycount", index_entrycount, 1, 1);
-    DEFUN("libgit-index-get-byindex", index_get_byindex, 2, 2);
-    DEFUN("libgit-index-get-bypath", index_get_bypath, 2, 3);
-    DEFUN("libgit-index-owner", index_owner, 1, 1);
-    DEFUN("libgit-index-path", index_path, 1, 1);
-    DEFUN("libgit-index-version", index_version, 1, 1);
-    DEFUN("libgit-index-conflicts-p", index_conflicts_p, 1, 1);
+    DEFUN("libgit2-index-caps", index_caps, 1, 1);
+    DEFUN("libgit2-index-checksum", index_checksum, 1, 1);
+    DEFUN("libgit2-index-conflict-foreach", index_conflict_foreach, 2, 2);
+    DEFUN("libgit2-index-conflict-get", index_conflict_get, 2, 2);
+    DEFUN("libgit2-index-entry-id", index_entry_id, 1, 1);
+    DEFUN("libgit2-index-entry-path", index_entry_path, 1, 1);
+    DEFUN("libgit2-index-entry-stage", index_entry_stage, 1, 1);
+    DEFUN("libgit2-index-entrycount", index_entrycount, 1, 1);
+    DEFUN("libgit2-index-get-byindex", index_get_byindex, 2, 2);
+    DEFUN("libgit2-index-get-bypath", index_get_bypath, 2, 3);
+    DEFUN("libgit2-index-owner", index_owner, 1, 1);
+    DEFUN("libgit2-index-path", index_path, 1, 1);
+    DEFUN("libgit2-index-version", index_version, 1, 1);
+    DEFUN("libgit2-index-conflicts-p", index_conflicts_p, 1, 1);
 
-    DEFUN("libgit-index-add-all", index_add_all, 1, 4);
-    DEFUN("libgit-index-add-bypath", index_add_bypath, 2, 2);
-    DEFUN("libgit-index-clear", index_clear, 1, 1);
-    DEFUN("libgit-index-read", index_read, 1, 2);
-    DEFUN("libgit-index-write", index_write, 1, 1);
-    DEFUN("libgit-index-write-tree", index_write_tree, 1, 2);
+    DEFUN("libgit2-index-add-all", index_add_all, 1, 4);
+    DEFUN("libgit2-index-add-bypath", index_add_bypath, 2, 2);
+    DEFUN("libgit2-index-clear", index_clear, 1, 1);
+    DEFUN("libgit2-index-read", index_read, 1, 2);
+    DEFUN("libgit2-index-write", index_write, 1, 1);
+    DEFUN("libgit2-index-write-tree", index_write_tree, 1, 2);
 
     // Merge
-    DEFUN("libgit-merge", merge, 2, 4);
-    DEFUN("libgit-merge-analysis", merge_analysis, 2, 2);
-    DEFUN("libgit-merge-base", merge_base, 2, 2);
-    DEFUN("libgit-merge-base-octopus", merge_base_octopus, 2, 2);
-    DEFUN("libgit-merge-bases", merge_bases, 2, 2);
+    DEFUN("libgit2-merge", merge, 2, 4);
+    DEFUN("libgit2-merge-analysis", merge_analysis, 2, 2);
+    DEFUN("libgit2-merge-base", merge_base, 2, 2);
+    DEFUN("libgit2-merge-base-octopus", merge_base_octopus, 2, 2);
+    DEFUN("libgit2-merge-bases", merge_bases, 2, 2);
 
     // Message
-    DEFUN("libgit-message-prettify", message_prettify, 1, 2);
-    DEFUN("libgit-message-trailers", message_trailers, 1, 1);
+    DEFUN("libgit2-message-prettify", message_prettify, 1, 2);
+    DEFUN("libgit2-message-trailers", message_trailers, 1, 1);
 
     // Object
-    DEFUN("libgit-object-lookup", object_lookup, 2, 3);
-    DEFUN("libgit-object-lookup-prefix", object_id, 2, 3);
+    DEFUN("libgit2-object-lookup", object_lookup, 2, 3);
+    DEFUN("libgit2-object-lookup-prefix", object_id, 2, 3);
 
-    DEFUN("libgit-object-id", object_id, 1, 1);
-    DEFUN("libgit-object-owner", object_owner, 1, 1);
-    DEFUN("libgit-object-short-id", object_short_id, 1, 1);
+    DEFUN("libgit2-object-id", object_id, 1, 1);
+    DEFUN("libgit2-object-owner", object_owner, 1, 1);
+    DEFUN("libgit2-object-short-id", object_short_id, 1, 1);
 
     // Pathspec
-    DEFUN("libgit-pathspec-new", pathspec_new, 1, 1);
-    DEFUN("libgit-pathspec-matches-path", pathspec_matches_path, 3, 3);
-    DEFUN("libgit-pathspec-match-list-entrycount", pathspec_match_list_entrycount, 1, 1);
-    DEFUN("libgit-pathspec-match-list-entry", pathspec_match_list_entry, 2, 2);
-    DEFUN("libgit-pathspec-match-list-diff-entry", pathspec_match_list_diff_entry, 2, 2);
-    DEFUN("libgit-pathspec-match-list-failed-entrycount", pathspec_match_list_failed_entrycount, 1, 1);
-    DEFUN("libgit-pathspec-match-list-failed-entry", pathspec_match_list_failed_entry, 2, 2);
-    DEFUN("libgit-pathspec-match-workdir", pathspec_match_workdir, 3, 3);
-    DEFUN("libgit-pathspec-match-index", pathspec_match_index, 3, 3);
-    DEFUN("libgit-pathspec-match-tree", pathspec_match_tree, 3, 3);
-    DEFUN("libgit-pathspec-match-diff", pathspec_match_diff, 3, 3);
+    DEFUN("libgit2-pathspec-new", pathspec_new, 1, 1);
+    DEFUN("libgit2-pathspec-matches-path", pathspec_matches_path, 3, 3);
+    DEFUN("libgit2-pathspec-match-list-entrycount", pathspec_match_list_entrycount, 1, 1);
+    DEFUN("libgit2-pathspec-match-list-entry", pathspec_match_list_entry, 2, 2);
+    DEFUN("libgit2-pathspec-match-list-diff-entry", pathspec_match_list_diff_entry, 2, 2);
+    DEFUN("libgit2-pathspec-match-list-failed-entrycount", pathspec_match_list_failed_entrycount, 1, 1);
+    DEFUN("libgit2-pathspec-match-list-failed-entry", pathspec_match_list_failed_entry, 2, 2);
+    DEFUN("libgit2-pathspec-match-workdir", pathspec_match_workdir, 3, 3);
+    DEFUN("libgit2-pathspec-match-index", pathspec_match_index, 3, 3);
+    DEFUN("libgit2-pathspec-match-tree", pathspec_match_tree, 3, 3);
+    DEFUN("libgit2-pathspec-match-diff", pathspec_match_diff, 3, 3);
 
     // Reference
-    DEFUN("libgit-reference-create", reference_create, 3, 5);
-    DEFUN("libgit-reference-create-matching", reference_create_matching, 3, 6);
-    DEFUN("libgit-reference-dup", reference_dup, 1, 1);
-    DEFUN("libgit-reference-dwim", reference_dwim, 2, 2);
-    DEFUN("libgit-reference-lookup", reference_lookup, 2, 2);
+    DEFUN("libgit2-reference-create", reference_create, 3, 5);
+    DEFUN("libgit2-reference-create-matching", reference_create_matching, 3, 6);
+    DEFUN("libgit2-reference-dup", reference_dup, 1, 1);
+    DEFUN("libgit2-reference-dwim", reference_dwim, 2, 2);
+    DEFUN("libgit2-reference-lookup", reference_lookup, 2, 2);
 
-    DEFUN("libgit-reference-list", reference_list, 1, 1);
-    DEFUN("libgit-reference-name", reference_name, 1, 1);
-    DEFUN("libgit-reference-owner", reference_owner, 1, 1);
-    DEFUN("libgit-reference-peel", reference_peel, 1, 2);
-    DEFUN("libgit-reference-resolve", reference_resolve, 1, 1);
-    DEFUN("libgit-reference-shorthand", reference_shorthand, 1, 1);
-    DEFUN("libgit-reference-symbolic-target", reference_symbolic_target, 1, 1);
-    DEFUN("libgit-reference-target", reference_target, 1, 1);
-    DEFUN("libgit-reference-target-peel", reference_target, 1, 1);
-    DEFUN("libgit-reference-type", reference_type, 1, 1);
+    DEFUN("libgit2-reference-list", reference_list, 1, 1);
+    DEFUN("libgit2-reference-name", reference_name, 1, 1);
+    DEFUN("libgit2-reference-owner", reference_owner, 1, 1);
+    DEFUN("libgit2-reference-peel", reference_peel, 1, 2);
+    DEFUN("libgit2-reference-resolve", reference_resolve, 1, 1);
+    DEFUN("libgit2-reference-shorthand", reference_shorthand, 1, 1);
+    DEFUN("libgit2-reference-symbolic-target", reference_symbolic_target, 1, 1);
+    DEFUN("libgit2-reference-target", reference_target, 1, 1);
+    DEFUN("libgit2-reference-target-peel", reference_target, 1, 1);
+    DEFUN("libgit2-reference-type", reference_type, 1, 1);
 
-    DEFUN("libgit-reference-delete", reference_delete, 1, 1);
-    DEFUN("libgit-reference-ensure-log", reference_ensure_log, 2, 2);
-    DEFUN("libgit-reference-remove", reference_delete, 2, 2);
+    DEFUN("libgit2-reference-delete", reference_delete, 1, 1);
+    DEFUN("libgit2-reference-ensure-log", reference_ensure_log, 2, 2);
+    DEFUN("libgit2-reference-remove", reference_delete, 2, 2);
 
-    DEFUN("libgit-reference-branch-p", reference_branch_p, 1, 1);
-    DEFUN("libgit-reference-direct-p", reference_direct_p, 1, 1);
-    DEFUN("libgit-reference-has-log-p", reference_has_log_p, 2, 2);
-    DEFUN("libgit-reference-name-to-id", reference_name_to_id, 2, 2);
-    DEFUN("libgit-reference-note-p", reference_note_p, 1, 1);
-    DEFUN("libgit-reference-remote-p", reference_remote_p, 1, 1);
-    DEFUN("libgit-reference-symbolic-p", reference_symbolic_p, 1, 1);
-    DEFUN("libgit-reference-tag-p", reference_tag_p, 1, 1);
-    DEFUN("libgit-reference-valid-name-p", reference_valid_name_p, 1, 1);
+    DEFUN("libgit2-reference-branch-p", reference_branch_p, 1, 1);
+    DEFUN("libgit2-reference-direct-p", reference_direct_p, 1, 1);
+    DEFUN("libgit2-reference-has-log-p", reference_has_log_p, 2, 2);
+    DEFUN("libgit2-reference-name-to-id", reference_name_to_id, 2, 2);
+    DEFUN("libgit2-reference-note-p", reference_note_p, 1, 1);
+    DEFUN("libgit2-reference-remote-p", reference_remote_p, 1, 1);
+    DEFUN("libgit2-reference-symbolic-p", reference_symbolic_p, 1, 1);
+    DEFUN("libgit2-reference-tag-p", reference_tag_p, 1, 1);
+    DEFUN("libgit2-reference-valid-name-p", reference_valid_name_p, 1, 1);
 
-    DEFUN("libgit-reference-foreach", reference_foreach, 2, 2);
-    DEFUN("libgit-reference-foreach-glob", reference_foreach_glob, 3, 3);
-    DEFUN("libgit-reference-foreach-name", reference_foreach_name, 2, 2);
+    DEFUN("libgit2-reference-foreach", reference_foreach, 2, 2);
+    DEFUN("libgit2-reference-foreach-glob", reference_foreach_glob, 3, 3);
+    DEFUN("libgit2-reference-foreach-name", reference_foreach_name, 2, 2);
 
     // Reflog
-    DEFUN("libgit-reflog-read", reflog_read, 1, 2);
-    DEFUN("libgit-reflog-entry-byindex", reflog_entry_byindex, 2, 2);
-    DEFUN("libgit-reflog-entry-committer", reflog_entry_committer, 1, 1);
-    DEFUN("libgit-reflog-entry-id", reflog_entry_id, 1, 2);
-    DEFUN("libgit-reflog-entry-message", reflog_entry_message, 1, 1);
-    DEFUN("libgit-reflog-entrycount", reflog_entrycount, 1, 1);
-    DEFUN("libgit-reflog-append", reflog_append, 3, 4);
-    DEFUN("libgit-reflog-drop", reflog_drop, 2, 3);
-    DEFUN("libgit-reflog-rename", reflog_rename, 3, 3);
-    DEFUN("libgit-reflog-write", reflog_write, 1, 1);
+    DEFUN("libgit2-reflog-read", reflog_read, 1, 2);
+    DEFUN("libgit2-reflog-entry-byindex", reflog_entry_byindex, 2, 2);
+    DEFUN("libgit2-reflog-entry-committer", reflog_entry_committer, 1, 1);
+    DEFUN("libgit2-reflog-entry-id", reflog_entry_id, 1, 2);
+    DEFUN("libgit2-reflog-entry-message", reflog_entry_message, 1, 1);
+    DEFUN("libgit2-reflog-entrycount", reflog_entrycount, 1, 1);
+    DEFUN("libgit2-reflog-append", reflog_append, 3, 4);
+    DEFUN("libgit2-reflog-drop", reflog_drop, 2, 3);
+    DEFUN("libgit2-reflog-rename", reflog_rename, 3, 3);
+    DEFUN("libgit2-reflog-write", reflog_write, 1, 1);
 
     // Refspec
-    DEFUN("libgit-refspec-direction", refspec_direction, 1, 1);
-    DEFUN("libgit-refspec-dst", refspec_dst, 1, 1);
-    DEFUN("libgit-refspec-src", refspec_src, 1, 1);
-    DEFUN("libgit-refspec-string", refspec_string, 1, 1);
-    DEFUN("libgit-refspec-dst-matches-p", refspec_dst_matches_p, 2, 2);
-    DEFUN("libgit-refspec-force-p", refspec_force_p, 1, 1);
-    DEFUN("libgit-refspec-src-matches-p", refspec_src_matches_p, 2, 2);
+    DEFUN("libgit2-refspec-direction", refspec_direction, 1, 1);
+    DEFUN("libgit2-refspec-dst", refspec_dst, 1, 1);
+    DEFUN("libgit2-refspec-src", refspec_src, 1, 1);
+    DEFUN("libgit2-refspec-string", refspec_string, 1, 1);
+    DEFUN("libgit2-refspec-dst-matches-p", refspec_dst_matches_p, 2, 2);
+    DEFUN("libgit2-refspec-force-p", refspec_force_p, 1, 1);
+    DEFUN("libgit2-refspec-src-matches-p", refspec_src_matches_p, 2, 2);
 
     // Remote
-    DEFUN("libgit-remote-create", remote_create, 3, 3);
-    DEFUN("libgit-remote-lookup", remote_lookup, 2, 2);
+    DEFUN("libgit2-remote-create", remote_create, 3, 3);
+    DEFUN("libgit2-remote-lookup", remote_lookup, 2, 2);
 
-    DEFUN("libgit-remote-autotag", remote_autotag, 1, 1);
-    DEFUN("libgit-remote-get-refspec", remote_get_refspec, 2, 2);
-    DEFUN("libgit-remote-get-refspecs", remote_get_refspecs, 1, 2);
-    DEFUN("libgit-remote-name", remote_name, 1, 1);
-    DEFUN("libgit-remote-owner", remote_owner, 1, 1);
-    DEFUN("libgit-remote-pushurl", remote_pushurl, 1, 1);
-    DEFUN("libgit-remote-refspec-count", remote_refspec_count, 1, 1);
-    DEFUN("libgit-remote-url", remote_url, 1, 1);
-    DEFUN("libgit-remote-list", remote_list, 1, 1);
-    DEFUN("libgit-remote-valid-name-p", remote_valid_name_p, 1, 1);
+    DEFUN("libgit2-remote-autotag", remote_autotag, 1, 1);
+    DEFUN("libgit2-remote-get-refspec", remote_get_refspec, 2, 2);
+    DEFUN("libgit2-remote-get-refspecs", remote_get_refspecs, 1, 2);
+    DEFUN("libgit2-remote-name", remote_name, 1, 1);
+    DEFUN("libgit2-remote-owner", remote_owner, 1, 1);
+    DEFUN("libgit2-remote-pushurl", remote_pushurl, 1, 1);
+    DEFUN("libgit2-remote-refspec-count", remote_refspec_count, 1, 1);
+    DEFUN("libgit2-remote-url", remote_url, 1, 1);
+    DEFUN("libgit2-remote-list", remote_list, 1, 1);
+    DEFUN("libgit2-remote-valid-name-p", remote_valid_name_p, 1, 1);
 
-    DEFUN("libgit-remote-add-refspec", remote_add_refspec, 3, 4);
-    DEFUN("libgit-remote-fetch", remote_fetch, 1, 4);
-    DEFUN("libgit-remote-push", remote_push, 1, 3);
+    DEFUN("libgit2-remote-add-refspec", remote_add_refspec, 3, 4);
+    DEFUN("libgit2-remote-fetch", remote_fetch, 1, 4);
+    DEFUN("libgit2-remote-push", remote_push, 1, 3);
 
     // Repository
-    DEFUN("libgit-repository-init", repository_init, 1, 2);
-    DEFUN("libgit-repository-open", repository_open, 1, 1);
-    DEFUN("libgit-repository-open-bare", repository_open_bare, 1, 1);
+    DEFUN("libgit2-repository-init", repository_init, 1, 2);
+    DEFUN("libgit2-repository-open", repository_open, 1, 1);
+    DEFUN("libgit2-repository-open-bare", repository_open_bare, 1, 1);
 
-    DEFUN("libgit-repository-commondir", repository_commondir, 1, 1);
-    DEFUN("libgit-repository-config", repository_config, 1, 1);
-    DEFUN("libgit-repository-get-namespace", repository_get_namespace, 1, 1);
-    DEFUN("libgit-repository-head", repository_head, 1, 1);
-    DEFUN("libgit-repository-head-for-worktree", repository_head_for_worktree, 2, 2);
-    DEFUN("libgit-repository-ident", repository_ident, 1, 1);
-    DEFUN("libgit-repository-index", repository_index, 1, 1);
-    DEFUN("libgit-repository-message", repository_message, 1, 1);
-    DEFUN("libgit-repository-path", repository_path, 1, 1);
-    DEFUN("libgit-repository-state", repository_state, 1, 1);
-    DEFUN("libgit-repository-workdir", repository_workdir, 1, 1);
+    DEFUN("libgit2-repository-commondir", repository_commondir, 1, 1);
+    DEFUN("libgit2-repository-config", repository_config, 1, 1);
+    DEFUN("libgit2-repository-get-namespace", repository_get_namespace, 1, 1);
+    DEFUN("libgit2-repository-head", repository_head, 1, 1);
+    DEFUN("libgit2-repository-head-for-worktree", repository_head_for_worktree, 2, 2);
+    DEFUN("libgit2-repository-ident", repository_ident, 1, 1);
+    DEFUN("libgit2-repository-index", repository_index, 1, 1);
+    DEFUN("libgit2-repository-message", repository_message, 1, 1);
+    DEFUN("libgit2-repository-path", repository_path, 1, 1);
+    DEFUN("libgit2-repository-state", repository_state, 1, 1);
+    DEFUN("libgit2-repository-workdir", repository_workdir, 1, 1);
 
-    DEFUN("libgit-repository-detach-head", repository_detach_head, 1, 1);
-    DEFUN("libgit-repository-message-remove", repository_message_remove, 1, 1);
-    DEFUN("libgit-repository-set-head", repository_set_head, 2, 2);
-    DEFUN("libgit-repository-set-head-detached", repository_set_head_detached, 2, 2);
-    DEFUN("libgit-repository-set-ident", repository_set_ident, 1, 3);
-    DEFUN("libgit-repository-set-namespace", repository_set_namespace, 2, 2);
-    DEFUN("libgit-repository-set-workdir", repository_set_workdir, 2, 3);
-    DEFUN("libgit-repository-state-cleanup", repository_state_cleanup, 1, 1);
+    DEFUN("libgit2-repository-detach-head", repository_detach_head, 1, 1);
+    DEFUN("libgit2-repository-message-remove", repository_message_remove, 1, 1);
+    DEFUN("libgit2-repository-set-head", repository_set_head, 2, 2);
+    DEFUN("libgit2-repository-set-head-detached", repository_set_head_detached, 2, 2);
+    DEFUN("libgit2-repository-set-ident", repository_set_ident, 1, 3);
+    DEFUN("libgit2-repository-set-namespace", repository_set_namespace, 2, 2);
+    DEFUN("libgit2-repository-set-workdir", repository_set_workdir, 2, 3);
+    DEFUN("libgit2-repository-state-cleanup", repository_state_cleanup, 1, 1);
 
-    DEFUN("libgit-repository-bare-p", repository_bare_p, 1, 1);
-    DEFUN("libgit-repository-empty-p", repository_empty_p, 1, 1);
-    DEFUN("libgit-repository-head-detached-p", repository_empty_p, 1, 1);
-    DEFUN("libgit-repository-head-unborn-p", repository_empty_p, 1, 1);
-    DEFUN("libgit-repository-shallow-p", repository_shallow_p, 1, 1);
-    DEFUN("libgit-repository-worktree-p", repository_worktree_p, 1, 1);
+    DEFUN("libgit2-repository-bare-p", repository_bare_p, 1, 1);
+    DEFUN("libgit2-repository-empty-p", repository_empty_p, 1, 1);
+    DEFUN("libgit2-repository-head-detached-p", repository_empty_p, 1, 1);
+    DEFUN("libgit2-repository-head-unborn-p", repository_empty_p, 1, 1);
+    DEFUN("libgit2-repository-shallow-p", repository_shallow_p, 1, 1);
+    DEFUN("libgit2-repository-worktree-p", repository_worktree_p, 1, 1);
 
-    DEFUN("libgit-repository-discover", repository_discover, 0, 3);
+    DEFUN("libgit2-repository-discover", repository_discover, 0, 3);
 
     // Reset
-    DEFUN("libgit-reset", reset, 3, 4);
-    DEFUN("libgit-reset-from-annotated", reset_from_annotated, 3, 4);
-    DEFUN("libgit-reset-default", reset_default, 3, 3);
+    DEFUN("libgit2-reset", reset, 3, 4);
+    DEFUN("libgit2-reset-from-annotated", reset_from_annotated, 3, 4);
+    DEFUN("libgit2-reset-default", reset_default, 3, 3);
 
     // Revert
-    DEFUN("libgit-revert", revert, 2, 5);
-    DEFUN("libgit-revert-commit", revert_commit, 3, 5);
+    DEFUN("libgit2-revert", revert, 2, 5);
+    DEFUN("libgit2-revert-commit", revert_commit, 3, 5);
 
     // Revparse
-    DEFUN("libgit-revparse", revparse, 2, 2);
-    DEFUN("libgit-revparse-ext", revparse_ext, 2, 2);
-    DEFUN("libgit-revparse-single", revparse_single, 2, 2);
+    DEFUN("libgit2-revparse", revparse, 2, 2);
+    DEFUN("libgit2-revparse-ext", revparse_ext, 2, 2);
+    DEFUN("libgit2-revparse-single", revparse_single, 2, 2);
 
     // Revwalk
-    DEFUN("libgit-revwalk-new", revwalk_new, 1, 1);
-    DEFUN("libgit-revwalk-repository", revwalk_repository, 1, 1);
+    DEFUN("libgit2-revwalk-new", revwalk_new, 1, 1);
+    DEFUN("libgit2-revwalk-repository", revwalk_repository, 1, 1);
 
-    DEFUN("libgit-revwalk-hide", revwalk_hide, 2, 2);
-    DEFUN("libgit-revwalk-hide-glob", revwalk_hide_glob, 2, 2);
-    DEFUN("libgit-revwalk-hide-head", revwalk_hide_head, 1, 1);
-    DEFUN("libgit-revwalk-hide-ref", revwalk_hide_ref, 2, 2);
+    DEFUN("libgit2-revwalk-hide", revwalk_hide, 2, 2);
+    DEFUN("libgit2-revwalk-hide-glob", revwalk_hide_glob, 2, 2);
+    DEFUN("libgit2-revwalk-hide-head", revwalk_hide_head, 1, 1);
+    DEFUN("libgit2-revwalk-hide-ref", revwalk_hide_ref, 2, 2);
 
-    DEFUN("libgit-revwalk-push", revwalk_push, 2, 2);
-    DEFUN("libgit-revwalk-push-glob", revwalk_push_glob, 2, 2);
-    DEFUN("libgit-revwalk-push-head", revwalk_push_head, 1, 1);
-    DEFUN("libgit-revwalk-push-range", revwalk_push_range, 2, 2);
-    DEFUN("libgit-revwalk-push-ref", revwalk_push_ref, 2, 2);
+    DEFUN("libgit2-revwalk-push", revwalk_push, 2, 2);
+    DEFUN("libgit2-revwalk-push-glob", revwalk_push_glob, 2, 2);
+    DEFUN("libgit2-revwalk-push-head", revwalk_push_head, 1, 1);
+    DEFUN("libgit2-revwalk-push-range", revwalk_push_range, 2, 2);
+    DEFUN("libgit2-revwalk-push-ref", revwalk_push_ref, 2, 2);
 
-    DEFUN("libgit-revwalk-reset", revwalk_reset, 1, 1);
-    DEFUN("libgit-revwalk-simplifiy-first-parent", revwalk_simplify_first_parent, 1, 1);
-    DEFUN("libgit-revwalk-sorting", revwalk_sorting, 1, 2);
+    DEFUN("libgit2-revwalk-reset", revwalk_reset, 1, 1);
+    DEFUN("libgit2-revwalk-simplifiy-first-parent", revwalk_simplify_first_parent, 1, 1);
+    DEFUN("libgit2-revwalk-sorting", revwalk_sorting, 1, 2);
 
-    DEFUN("libgit-revwalk-foreach", revwalk_foreach, 2, 3);
+    DEFUN("libgit2-revwalk-foreach", revwalk_foreach, 2, 3);
 
     // Signature
-    DEFUN("libgit-signature-default", signature_default, 1, 1);
-    DEFUN("libgit-signature-from-string", signature_from_string, 1, 1);
-    DEFUN("libgit-signature-new", signature_new, 3, 3);
-    DEFUN("libgit-signature-now", signature_now, 2, 2);
-    DEFUN("libgit-signature-name", signature_name, 1, 1);
-    DEFUN("libgit-signature-email", signature_email, 1, 1);
-    DEFUN("libgit-signature-time", signature_time, 1, 1);
+    DEFUN("libgit2-signature-default", signature_default, 1, 1);
+    DEFUN("libgit2-signature-from-string", signature_from_string, 1, 1);
+    DEFUN("libgit2-signature-new", signature_new, 3, 3);
+    DEFUN("libgit2-signature-now", signature_now, 2, 2);
+    DEFUN("libgit2-signature-name", signature_name, 1, 1);
+    DEFUN("libgit2-signature-email", signature_email, 1, 1);
+    DEFUN("libgit2-signature-time", signature_time, 1, 1);
 
     // Status
-    DEFUN("libgit-status-decode", status_decode, 1, 1);
-    DEFUN("libgit-status-file", status_file, 2, 2);
-    DEFUN("libgit-status-should-ignore-p", status_should_ignore_p, 2, 2);
-    DEFUN("libgit-status-foreach-ext", status_foreach_ext, 2, 6);
+    DEFUN("libgit2-status-decode", status_decode, 1, 1);
+    DEFUN("libgit2-status-file", status_file, 2, 2);
+    DEFUN("libgit2-status-should-ignore-p", status_should_ignore_p, 2, 2);
+    DEFUN("libgit2-status-foreach-ext", status_foreach_ext, 2, 6);
 
     // Submodule
-    DEFUN("libgit-submodule-add-setup", submodule_add_setup, 3, 4);
-    DEFUN("libgit-submodule-lookup", submodule_lookup, 2, 2);
-    DEFUN("libgit-submodule-foreach", submodule_foreach, 2, 2);
+    DEFUN("libgit2-submodule-add-setup", submodule_add_setup, 3, 4);
+    DEFUN("libgit2-submodule-lookup", submodule_lookup, 2, 2);
+    DEFUN("libgit2-submodule-foreach", submodule_foreach, 2, 2);
 
-    DEFUN("libgit-submodule-branch", submodule_branch, 1, 1);
-    DEFUN("libgit-submodule-fetch-recurse-submodules", submodule_fetch_recurse_submodules, 1, 1);
-    DEFUN("libgit-submodule-head-id", submodule_head_id, 1, 1);
-    DEFUN("libgit-submodule-ignore", submodule_ignore, 1, 1);
-    DEFUN("libgit-submodule-index-id", submodule_index_id, 1, 1);
-    DEFUN("libgit-submodule-location", submodule_location, 1, 2);
-    DEFUN("libgit-submodule-name", submodule_name, 1, 1);
-    DEFUN("libgit-submodule-open", submodule_open, 1, 1);
-    DEFUN("libgit-submodule-owner", submodule_owner, 1, 1);
-    DEFUN("libgit-submodule-path", submodule_path, 1, 1);
-    DEFUN("libgit-submodule-status", submodule_status, 2, 4);
-    DEFUN("libgit-submodule-update-strategy", submodule_update_strategy, 1, 1);
-    DEFUN("libgit-submodule-url", submodule_url, 1, 1);
-    DEFUN("libgit-submodule-wd-id", submodule_wd_id, 1, 1);
+    DEFUN("libgit2-submodule-branch", submodule_branch, 1, 1);
+    DEFUN("libgit2-submodule-fetch-recurse-submodules", submodule_fetch_recurse_submodules, 1, 1);
+    DEFUN("libgit2-submodule-head-id", submodule_head_id, 1, 1);
+    DEFUN("libgit2-submodule-ignore", submodule_ignore, 1, 1);
+    DEFUN("libgit2-submodule-index-id", submodule_index_id, 1, 1);
+    DEFUN("libgit2-submodule-location", submodule_location, 1, 2);
+    DEFUN("libgit2-submodule-name", submodule_name, 1, 1);
+    DEFUN("libgit2-submodule-open", submodule_open, 1, 1);
+    DEFUN("libgit2-submodule-owner", submodule_owner, 1, 1);
+    DEFUN("libgit2-submodule-path", submodule_path, 1, 1);
+    DEFUN("libgit2-submodule-status", submodule_status, 2, 4);
+    DEFUN("libgit2-submodule-update-strategy", submodule_update_strategy, 1, 1);
+    DEFUN("libgit2-submodule-url", submodule_url, 1, 1);
+    DEFUN("libgit2-submodule-wd-id", submodule_wd_id, 1, 1);
 
-    DEFUN("libgit-submodule-add-finalize", submodule_add_finalize, 1, 1);
-    DEFUN("libgit-submodule-add-to-index", submodule_add_to_index, 1, 2);
-    DEFUN("libgit-submodule-init", submodule_init, 1, 2);
-    DEFUN("libgit-submodule-reload", submodule_reload, 1, 2);
-    DEFUN("libgit-submodule-repo-init", submodule_repo_init, 1, 2);
-    DEFUN("libgit-submodule-set-branch", submodule_set_branch, 3, 3);
-    DEFUN("libgit-submodule-set-fetch-recurse-submodules", submodule_set_fetch_recurse_submodules, 2, 3);
-    DEFUN("libgit-submodule-set-ignore", submodule_set_ignore, 3, 3);
-    DEFUN("libgit-submodule-set-update", submodule_set_update, 3, 3);
-    DEFUN("libgit-submodule-set-url", submodule_set_url, 3, 3);
-    DEFUN("libgit-submodule-sync", submodule_sync, 1, 1);
-    DEFUN("libgit-submodule-update", submodule_sync, 1, 5);
+    DEFUN("libgit2-submodule-add-finalize", submodule_add_finalize, 1, 1);
+    DEFUN("libgit2-submodule-add-to-index", submodule_add_to_index, 1, 2);
+    DEFUN("libgit2-submodule-init", submodule_init, 1, 2);
+    DEFUN("libgit2-submodule-reload", submodule_reload, 1, 2);
+    DEFUN("libgit2-submodule-repo-init", submodule_repo_init, 1, 2);
+    DEFUN("libgit2-submodule-set-branch", submodule_set_branch, 3, 3);
+    DEFUN("libgit2-submodule-set-fetch-recurse-submodules", submodule_set_fetch_recurse_submodules, 2, 3);
+    DEFUN("libgit2-submodule-set-ignore", submodule_set_ignore, 3, 3);
+    DEFUN("libgit2-submodule-set-update", submodule_set_update, 3, 3);
+    DEFUN("libgit2-submodule-set-url", submodule_set_url, 3, 3);
+    DEFUN("libgit2-submodule-sync", submodule_sync, 1, 1);
+    DEFUN("libgit2-submodule-update", submodule_sync, 1, 5);
 
     // Tag
-    DEFUN("libgit-tag-lookup", tag_lookup, 2, 2);
-    DEFUN("libgit-tag-lookup-prefix", tag_lookup_prefix, 2, 2);
-    DEFUN("libgit-tag-foreach", tag_foreach, 2, 2);
-    DEFUN("libgit-tag-id", tag_id, 1, 1);
-    DEFUN("libgit-tag-owner", tag_owner, 1, 1);
-    DEFUN("libgit-tag-message", tag_message, 1, 1);
-    DEFUN("libgit-tag-name", tag_name, 1, 1);
-    DEFUN("libgit-tag-peel", tag_peel, 1, 1);
-    DEFUN("libgit-tag-target", tag_target, 1, 1);
-    DEFUN("libgit-tag-target-id", tag_target_id, 1, 1);
-    DEFUN("libgit-tag-target-type", tag_target_type, 1, 1);
-    DEFUN("libgit-tag-list", tag_list, 1, 2);
+    DEFUN("libgit2-tag-lookup", tag_lookup, 2, 2);
+    DEFUN("libgit2-tag-lookup-prefix", tag_lookup_prefix, 2, 2);
+    DEFUN("libgit2-tag-foreach", tag_foreach, 2, 2);
+    DEFUN("libgit2-tag-id", tag_id, 1, 1);
+    DEFUN("libgit2-tag-owner", tag_owner, 1, 1);
+    DEFUN("libgit2-tag-message", tag_message, 1, 1);
+    DEFUN("libgit2-tag-name", tag_name, 1, 1);
+    DEFUN("libgit2-tag-peel", tag_peel, 1, 1);
+    DEFUN("libgit2-tag-target", tag_target, 1, 1);
+    DEFUN("libgit2-tag-target-id", tag_target_id, 1, 1);
+    DEFUN("libgit2-tag-target-type", tag_target_type, 1, 1);
+    DEFUN("libgit2-tag-list", tag_list, 1, 2);
 
     // Transaction
-    DEFUN("libgit-transaction-commit", transaction_commit, 1, 1);
+    DEFUN("libgit2-transaction-commit", transaction_commit, 1, 1);
 
     // Tree
-    DEFUN("libgit-tree-lookup", tree_lookup, 2, 2);
-    DEFUN("libgit-tree-lookup-prefix", tree_lookup_prefix, 2, 2);
+    DEFUN("libgit2-tree-lookup", tree_lookup, 2, 2);
+    DEFUN("libgit2-tree-lookup-prefix", tree_lookup_prefix, 2, 2);
 
-    DEFUN("libgit-tree-id", tree_id, 1, 1);
-    DEFUN("libgit-tree-owner", tree_owner, 1, 1);
+    DEFUN("libgit2-tree-id", tree_id, 1, 1);
+    DEFUN("libgit2-tree-owner", tree_owner, 1, 1);
 
-    DEFUN("libgit-tree-entry-byid", tree_entry_byid, 2, 2);
-    DEFUN("libgit-tree-entry-byindex", tree_entry_byindex, 2, 2);
-    DEFUN("libgit-tree-entry-byname", tree_entry_byname, 2, 2);
-    DEFUN("libgit-tree-entry-bypath", tree_entry_bypath, 2, 2);
-    DEFUN("libgit-tree-entrycount", tree_entrycount, 1, 1);
+    DEFUN("libgit2-tree-entry-byid", tree_entry_byid, 2, 2);
+    DEFUN("libgit2-tree-entry-byindex", tree_entry_byindex, 2, 2);
+    DEFUN("libgit2-tree-entry-byname", tree_entry_byname, 2, 2);
+    DEFUN("libgit2-tree-entry-bypath", tree_entry_bypath, 2, 2);
+    DEFUN("libgit2-tree-entrycount", tree_entrycount, 1, 1);
 
-    DEFUN("libgit-tree-walk", tree_walk, 3, 3);
+    DEFUN("libgit2-tree-walk", tree_walk, 3, 3);
 
     // Treebuilder
-    DEFUN("libgit-treebuilder-new", treebuilder_new, 1, 2);
-    DEFUN("libgit-treebuilder-entrycount", treebuilder_entrycount, 1, 1);
-    DEFUN("libgit-treebuilder-get", treebuilder_get, 2, 2);
-    DEFUN("libgit-treebuilder-clear", treebuilder_clear, 1, 1);
-    DEFUN("libgit-treebuilder-insert", treebuilder_insert, 4, 4);
-    DEFUN("libgit-treebuilder-remove", treebuilder_remove, 2, 2);
-    DEFUN("libgit-treebuilder-write", treebuilder_write, 1, 1);
-    DEFUN("libgit-treebuilder-filter", treebuilder_filter, 2, 2);
+    DEFUN("libgit2-treebuilder-new", treebuilder_new, 1, 2);
+    DEFUN("libgit2-treebuilder-entrycount", treebuilder_entrycount, 1, 1);
+    DEFUN("libgit2-treebuilder-get", treebuilder_get, 2, 2);
+    DEFUN("libgit2-treebuilder-clear", treebuilder_clear, 1, 1);
+    DEFUN("libgit2-treebuilder-insert", treebuilder_insert, 4, 4);
+    DEFUN("libgit2-treebuilder-remove", treebuilder_remove, 2, 2);
+    DEFUN("libgit2-treebuilder-write", treebuilder_write, 1, 1);
+    DEFUN("libgit2-treebuilder-filter", treebuilder_filter, 2, 2);
 }

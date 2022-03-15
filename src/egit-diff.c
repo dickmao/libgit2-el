@@ -272,7 +272,7 @@ emacs_value egit_diff_index_to_index(
 EGIT_DOC(diff_index_to_workdir, "REPO &optional INDEX OPTS",
          "Create a diff between an index and a workdir belonging to REPO.\n"
          "If INDEX wis nil, it will default to the repository index.\n"
-         "See `libgit-diff-index-to-index' for explanation of OPTS.");
+         "See `libgit2-diff-index-to-index' for explanation of OPTS.");
 emacs_value egit_diff_index_to_workdir(
     emacs_env *env, emacs_value _repo, emacs_value _index, emacs_value opts)
 {
@@ -294,7 +294,7 @@ EGIT_DOC(diff_tree_to_index, "REPO &optional OLD-TREE INDEX OPTS",
          "Create a diff between a tree and an index belonging to REPO.\n"
          "If OLD-TREE or INDEX are nil, they will default to the empty tree\n"
          "or the repository index, respectively.\n"
-         "See `libgit-diff-index-to-index' for explanation of OPTS.");
+         "See `libgit2-diff-index-to-index' for explanation of OPTS.");
 emacs_value egit_diff_tree_to_index(
     emacs_env *env, emacs_value _repo, emacs_value _old_tree,
     emacs_value _index, emacs_value opts)
@@ -319,7 +319,7 @@ emacs_value egit_diff_tree_to_index(
 EGIT_DOC(diff_tree_to_tree, "REPO &optional OLD-TREE NEW-TREE OPTS",
          "Create a diff between two trees belonging to REPO.\n"
          "If OLD-TREE or NEW-TREE are nil, they default to the empty tree.\n"
-         "See `libgit-diff-index-to-index' for explanation of OPTS.");
+         "See `libgit2-diff-index-to-index' for explanation of OPTS.");
 emacs_value egit_diff_tree_to_tree(
     emacs_env *env, emacs_value _repo, emacs_value _old_tree,
     emacs_value _new_tree, emacs_value opts)
@@ -342,7 +342,7 @@ emacs_value egit_diff_tree_to_tree(
 EGIT_DOC(diff_tree_to_workdir, "REPO &optional OLD-TREE OPTS",
          "Create a diff between OLD-TREE and the working directory of REPO.\n"
          "If OLD-TREE is nil it will default to the empty tree.\n"
-         "See `libgit-diff-index-to-index' for explanation of OPTS.");
+         "See `libgit2-diff-index-to-index' for explanation of OPTS.");
 emacs_value egit_diff_tree_to_workdir(
     emacs_env *env, emacs_value _repo, emacs_value _old_tree, emacs_value opts)
 {
@@ -364,7 +364,7 @@ EGIT_DOC(diff_tree_to_workdir_with_index, "REPO &optional OLD-TREE OPTS",
          "Create a diff between OLD-TREE and the working directory of REPO\n"
          "using index data to account for staged deletes, tracked files, etc.\n"
          "If OLD-TREE is nil it will default to the empty tree.\n"
-         "See `libgit-diff-index-to-index' for explanation of OPTS.");
+         "See `libgit2-diff-index-to-index' for explanation of OPTS.");
 emacs_value egit_diff_tree_to_workdir_with_index(
     emacs_env *env, emacs_value _repo, emacs_value _old_tree, emacs_value opts)
 {
@@ -705,7 +705,7 @@ EGIT_DOC(diff_line_origin, "LINE",
          "- 'H' hunk header\n"
          "- 'B' binary files differ\n\n"
          "The last three values are only sent to line callbacks when the content\n"
-         "of a diff is being filtered through `libgit-diff-print'.");
+         "of a diff is being filtered through `libgit2-diff-print'.");
 emacs_value egit_diff_line_origin(emacs_env *env, emacs_value _line)
 {
     EGIT_ASSERT_DIFF_LINE(_line);

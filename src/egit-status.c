@@ -10,7 +10,7 @@ static int foreach_callback(const char *, unsigned int, void*);
 
 EGIT_DOC(status_decode, "STATUS",
          "Decode git file STATUS.\n\n"
-         "The return value is the same as that of `libgit-status-file'.");
+         "The return value is the same as that of `libgit2-status-file'.");
 emacs_value egit_status_decode(emacs_env *env, emacs_value status)
 {
     intmax_t flags;
@@ -81,7 +81,7 @@ EGIT_DOC(status_foreach_ext, "REPO FUNCTION &optional SHOW FLAGS PATHSPEC BASELI
          "FUNCTION is called with two arguments: FILE and STATUS.\n"
          "FILE is path to a file, relative to the root directory.\n"
          "STATUS is an object describing the file status.\n"
-         "Use `libgit-status-decode' to decode it.\n\n"
+         "Use `libgit2-status-decode' to decode it.\n\n"
          "SHOW is a symbol which controls which files to show.  Possible "
          "values are:\n\n"
          "  `index-only'        - status based on HEAD to index comparison,\n"
